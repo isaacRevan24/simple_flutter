@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'widgets/projects_widgets/project_app_bar.dart';
-import 'widgets/projects_widgets/active_layout.dart';
-import 'widgets/projects_widgets/finished_layout.dart';
+import 'local_widgets/project_app_bar.dart';
+import 'local_widgets/active_layout.dart';
+import 'local_widgets/finished_layout.dart';
 
 class ProjectsPage extends StatelessWidget {
   @override

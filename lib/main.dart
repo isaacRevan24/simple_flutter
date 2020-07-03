@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
-import 'pages/widgets/custom-widget.dart';
+import 'widgets/custom-widget.dart';
 import 'pages/page_home.dart';
 import 'pages/page_tasks.dart';
-import 'pages/page_projects.dart';
-import 'pages/page_profile.dart';
+import 'pages/projects/page_projects.dart';
+import 'pages/profile/page_profile.dart';
 
 void main() => runApp(MyApp());
 

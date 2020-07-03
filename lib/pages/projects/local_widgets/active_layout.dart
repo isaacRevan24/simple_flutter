@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:simple_flutter/pages/widgets/projects_widgets/project_card.dart';
+import 'project_card.dart';
 
 class ActiveProjects extends StatefulWidget {
   const ActiveProjects({Key key}) : super(key: key);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'widgets/profile_widgets/user_info_presentation.dart';
-import 'widgets/profile_widgets/configuration_title.dart';
-import 'widgets/profile_widgets/configuration_options.dart';
+import 'local_widgets/user_info_presentation.dart';
+import 'local_widgets/configuration_options.dart';
+import 'local_widgets/configuration_title.dart';
 
 class ProfilePage extends StatelessWidget {
   @override
