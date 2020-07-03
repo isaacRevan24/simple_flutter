@@ -15,15 +15,14 @@ class _FinishedProjectsState extends State<FinishedProjects> {
       padding: const EdgeInsets.all(8),
       itemCount: entries.length,
       itemBuilder: (BuildContext context, int index) {
-        // TODO: Refactor this widget to be a function que reciba paramentros y cree el contenido
-        return Card(
-          child: BuildProjectTile(
-            index: index,
-            entries: entries,
-          ),
+        return BuildProjectTile(
+          index: index,
+          entries: entries,
         );
       },
       separatorBuilder: (BuildContext context, int index) => const Divider(),
     );
   }
 }
+
+// TODO: Refactor this widget to be a function que reciba paramentros y cree el contenido

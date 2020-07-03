@@ -9,15 +9,17 @@ class BuildProjectTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-      leading: FlutterLogo(
-        size: 70,
+    return Card(
+      child: ListTile(
+        contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+        leading: FlutterLogo(
+          size: 70,
+        ),
+        title: Text('Project number ${entries[index]}'),
+        subtitle: Text('Last update -> 66/66/6666'),
+        trailing: GeneralProjectIndicator(),
+        onTap: () {},
       ),
-      title: Text('Project number ${entries[index]}'),
-      subtitle: Text('Last update -> 66/66/6666'),
-      trailing: GeneralProjectIndicator(),
-      onTap: () {},
     );
   }
 }

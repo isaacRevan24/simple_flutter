@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:simple_flutter/presentation/pages/individual_project/individual_project.dart';
 import 'percent_circular_bar.dart';
 
 class BuildProjectTile extends StatelessWidget {
@@ -16,7 +18,17 @@ class BuildProjectTile extends StatelessWidget {
       title: Text('Project number ${entries[index]}'),
       subtitle: Text('Last update -> 66/66/6666'),
       trailing: GeneralProjectIndicator(),
-      onTap: () {},
+      onTap: () {
+        // TODO: Ver porque no funciona el on tap
+        Navigator.push(
+          context,
+          PageTransition(
+            duration: Duration(milliseconds: 200),
+            type: PageTransitionType.upToDown,
+            child: IndividualProject(),
+          ),
+        );
+      },
     );
   }
 }
