@@ -22,7 +22,10 @@ class _ActiveProjectsState extends State<ActiveProjects> {
       itemBuilder: (BuildContext context, int index) {
         // TODO: Refactor this widget to be a function que reciba paramentros y cree el contenido
         return Card(
-          child: buildProjectCard(index, entries, dates),
+          child: BuildProjectTile(
+            index: index,
+            entries: entries,
+          ),
         );
       },
       separatorBuilder: (BuildContext context, int index) => const Divider(),

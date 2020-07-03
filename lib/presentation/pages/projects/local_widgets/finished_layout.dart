@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'project_card.dart';
 
 class FinishedProjects extends StatefulWidget {
   @override
@@ -6,7 +7,8 @@ class FinishedProjects extends StatefulWidget {
 }
 
 class _FinishedProjectsState extends State<FinishedProjects> {
-  final List<String> entries = <String>['A', 'B', 'C'];
+  final List<String> entries = <String>['1', '2'];
+  final List<String> dates = <String>['66/66/6666', '66/66/6666'];
 
   final List<int> colorCodes = <int>[600, 500, 100];
   @override
@@ -15,10 +17,12 @@ class _FinishedProjectsState extends State<FinishedProjects> {
       padding: const EdgeInsets.all(8),
       itemCount: entries.length,
       itemBuilder: (BuildContext context, int index) {
-        return Container(
-          height: 50,
-          color: Colors.amber[colorCodes[index]],
-          child: Center(child: Text('Entry ${entries[index]}')),
+        // TODO: Refactor this widget to be a function que reciba paramentros y cree el contenido
+        return Card(
+          child: BuildProjectTile(
+            index: index,
+            entries: entries,
+          ),
         );
       },
       separatorBuilder: (BuildContext context, int index) => const Divider(),
