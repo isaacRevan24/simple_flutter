@@ -8,9 +8,7 @@ class FinishedProjects extends StatefulWidget {
 
 class _FinishedProjectsState extends State<FinishedProjects> {
   final List<String> entries = <String>['1', '2'];
-  final List<String> dates = <String>['66/66/6666', '66/66/6666'];
 
-  final List<int> colorCodes = <int>[600, 500, 100];
   @override
   Widget build(BuildContext context) {
     return ListView.separated(

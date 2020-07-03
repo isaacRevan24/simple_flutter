@@ -10,8 +10,7 @@ class ActiveProjects extends StatefulWidget {
 
 class _ActiveProjectsState extends State<ActiveProjects> {
   // TODO: Ver como pasar valores personalizados
-  final List<String> entries = <String>['1', '2', '3'];
-  final List<String> dates = <String>['66/66/6666', '66/66/6666', '66/66/6666'];
+  final List<String> entries = <String>['1', '2', '3', '4', '5'];
 
   @override
   Widget build(BuildContext context) {
