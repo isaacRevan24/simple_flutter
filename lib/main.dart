@@ -6,26 +6,25 @@ import 'pages/page_tasks.dart';
 import 'pages/projects/page_projects.dart';
 import 'pages/profile/page_profile.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(Simple());
 
-class MyApp extends StatelessWidget {
+class Simple extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Persistent Bottom Navigation Bar example project',
-      home: MyHomePage(),
+      home: SimpleBody(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
+class SimpleBody extends StatefulWidget {
+  SimpleBody({Key key}) : super(key: key);
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _SimpleBodyState createState() => _SimpleBodyState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _SimpleBodyState extends State<SimpleBody> {
   PersistentTabController _controller;
 
   @override
