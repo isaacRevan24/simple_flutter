@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'local_widgets/project_app_bar.dart';
 import 'local_widgets/active_layout.dart';
 import 'local_widgets/finished_layout.dart';
+import 'local_widgets/floating_action_button.dart';
 
 class ProjectsPage extends StatelessWidget {
   @override
@@ -18,11 +19,7 @@ class ProjectsPage extends StatelessWidget {
             FinishedProjects()
           ],
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => {},
-          child: const Icon(Icons.add),
-          backgroundColor: Colors.brown,
-        ),
+        floatingActionButton: buildFloatingActionButton(),
       ),
     );
   }

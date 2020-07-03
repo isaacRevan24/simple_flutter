@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'local_widgets/page_view_individual_project.dart';
+import 'local_widgets/app_bar.dart';
 
 class IndividualProject extends StatelessWidget {
   const IndividualProject({Key key}) : super(key: key);
@@ -8,19 +9,7 @@ class IndividualProject extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-          centerTitle: true,
-          title: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Text("Project name"),
-            ],
-          ),
-        ),
+        appBar: buildIndividualProjectAppBar(context),
         body: IndividualProjectPageView(),
       ),
     );
