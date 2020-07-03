@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'percent_circular_bar.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:simple_flutter/presentation/pages/individual_project/individual_project.dart';
-import 'percent_circular_bar.dart';
 
 class BuildProjectTile extends StatelessWidget {
   final int index;
@@ -19,7 +19,6 @@ class BuildProjectTile extends StatelessWidget {
       subtitle: Text('Last update -> 66/66/6666'),
       trailing: GeneralProjectIndicator(),
       onTap: () {
-        // TODO: Ver porque no funciona el on tap
         Navigator.push(
           context,
           PageTransition(
