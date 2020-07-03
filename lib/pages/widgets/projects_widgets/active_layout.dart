@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'percent_circular_bar.dart';
+import 'package:simple_flutter/pages/widgets/projects_widgets/project_card.dart';
 
 class ActiveProjects extends StatefulWidget {
   const ActiveProjects({Key key}) : super(key: key);
@@ -20,18 +20,15 @@ class _ActiveProjectsState extends State<ActiveProjects> {
       padding: const EdgeInsets.all(8),
       itemCount: entries.length,
       itemBuilder: (BuildContext context, int index) {
+        // TODO: Refactor this widget to be a function que reciba paramentros y cree el contenido
         return Card(
-          child: ListTile(
-            leading: FlutterLogo(size: 72.0),
-            title: Text('Project number ${entries[index]}'),
-            subtitle: Text('Last update in the project  ${dates[index]}'),
-            trailing: GeneralProjectIndicator(),
-            isThreeLine: true,
-            onTap: () {},
-          ),
+          child: buildProjectCard(index, entries, dates),
         );
       },
       separatorBuilder: (BuildContext context, int index) => const Divider(),
     );
   }
 }
+
+// TODO: Ver el diseño con grid en vez de tile
+// TODO: Hacer una funcion intermedio que maneje el filtrado entre grid y tile

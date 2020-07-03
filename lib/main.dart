@@ -105,3 +105,5 @@ class _MyHomePageState extends State<MyHomePage> {
         );
   }
 }
+
+// TODO: Pasar los strings y los estilos a consts

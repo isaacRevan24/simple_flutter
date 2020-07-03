@@ -11,6 +11,7 @@ class ConfigurationOptions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
         Card(
           child: ListTile(
