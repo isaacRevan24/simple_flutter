@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'project_levels_layout.dart';
+import 'project_structure_backgroud.dart';
 
 class ProjectStructure extends StatelessWidget {
+  const ProjectStructure({
+    Key key,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.red,
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(40),
-            topLeft: Radius.circular(40),
-          ),
-        ),
-      ),
+    return Stack(
+      children: <Widget>[
+        ProjectStructureBackgrounf(),
+        ProjectLevelsLayout(),
+      ],
     );
   }
 }
