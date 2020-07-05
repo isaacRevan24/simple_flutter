@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:simple_flutter/presentation/pages/individual_project/local_widgets/project_info_header_scroll.dart';
-import 'package:simple_flutter/presentation/pages/individual_project/local_widgets/project_info_managers_presentation.dart';
+import 'package:simple_flutter/presentation/pages/individual_project/local_widgets/project_info_managers_list.dart';
 
 class ProjectListContent extends StatelessWidget {
   // final List<Widget> innerContent = [];
