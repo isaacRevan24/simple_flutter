@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:percent_indicator/percent_indicator.dart';
+import 'project_info_percent_bar.dart';
 
 class ProjectInfoBackground extends StatelessWidget {
   final String direction = '/images/space.jpg';
@@ -20,18 +20,7 @@ class ProjectInfoBackground extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: LinearPercentIndicator(
-                  animation: true,
-                  lineHeight: 20.0,
-                  animationDuration: 1000,
-                  percent: 0.8,
-                  center: Text("80.0%"),
-                  linearStrokeCap: LinearStrokeCap.roundAll,
-                  progressColor: Colors.green,
-                ),
-              ),
+              ProjectInfoPercentBar(),
             ],
           ),
         ),
