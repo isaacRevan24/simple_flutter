@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:simple_flutter/presentation/widgets/projectListContentBuilder.dart';
+import 'package:simple_flutter/presentation/widgets/project_list_content_builder.dart';
 
 class ProjectLevelsLayout extends StatelessWidget {
   const ProjectLevelsLayout({
@@ -23,7 +23,7 @@ class ProjectLevelsLayout extends StatelessWidget {
                 topLeft: Radius.circular(40),
               ),
             ),
-            child: projectListContent(scrollController, listSize),
+            child: ProjectListContent(scrollController: scrollController),
           );
         },
       ),
