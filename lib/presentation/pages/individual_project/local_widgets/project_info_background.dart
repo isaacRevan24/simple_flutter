@@ -25,7 +25,7 @@ class ProjectInfoBackground extends StatelessWidget {
                 child: LinearPercentIndicator(
                   animation: true,
                   lineHeight: 20.0,
-                  animationDuration: 1500,
+                  animationDuration: 1000,
                   percent: 0.8,
                   center: Text("80.0%"),
                   linearStrokeCap: LinearStrokeCap.roundAll,
