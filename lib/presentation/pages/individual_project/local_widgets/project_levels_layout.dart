@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:simple_flutter/presentation/widgets/project_list_content_builder.dart';
 
 const BoxDecoration roundedConentAreaDecoration = BoxDecoration(
-    color: Colors.red,
+    color: Colors.blueGrey,
     borderRadius: BorderRadius.only(
       topRight: Radius.circular(40),
       topLeft: Radius.circular(40),
