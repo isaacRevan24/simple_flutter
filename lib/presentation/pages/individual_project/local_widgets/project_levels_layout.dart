@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:simple_flutter/presentation/widgets/project_list_content_builder.dart';
+import 'package:simple_flutter/presentation/widgets/individual_project_list_content_builder.dart';
 
 const BoxDecoration roundedConentAreaDecoration = BoxDecoration(
     color: Colors.blueGrey,

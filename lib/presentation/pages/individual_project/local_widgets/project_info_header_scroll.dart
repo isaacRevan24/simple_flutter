@@ -25,7 +25,7 @@ class ProjecInfotHeader extends StatelessWidget {
             thickness: 2,
           ),
           Container(
-            padding: EdgeInsets.only(left: 25, top: 5, bottom: 10),
+            padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
             alignment: Alignment.topLeft,
             child: Text(
               'Description',
@@ -37,7 +37,10 @@ class ProjecInfotHeader extends StatelessWidget {
           ),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 25),
-            child: Text(descriptionTest),
+            child: Text(
+              descriptionTest,
+              style: TextStyle(fontSize: 15),
+            ),
           ),
         ],
       ),
