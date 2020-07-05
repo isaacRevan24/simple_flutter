@@ -30,7 +30,7 @@ class _SubTitle extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
       alignment: Alignment.topLeft,
       child: Text(
-        'Description',
+        'Project sections',
         style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 15,

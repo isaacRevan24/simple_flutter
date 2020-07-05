@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ProjectStructureBackgrounf extends StatelessWidget {
+class ProjectStructureBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FractionallySizedBox(
