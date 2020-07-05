@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class ManagerListCard extends StatelessWidget {
+class MembersListCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
         _TitleText(),
-        _ManagerListCards(),
+        _MemberListCard(),
       ],
     );
   }
@@ -19,7 +19,7 @@ class _TitleText extends StatelessWidget {
       padding: EdgeInsets.only(left: 25, top: 20, right: 25),
       alignment: Alignment.topLeft,
       child: Text(
-        'Manager',
+        'Members',
         style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 15,
@@ -29,7 +29,7 @@ class _TitleText extends StatelessWidget {
   }
 }
 
-class _ManagerListCards extends StatelessWidget {
+class _MemberListCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -41,10 +41,10 @@ class _ManagerListCards extends StatelessWidget {
           physics: ClampingScrollPhysics(),
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
-          // max 5 manager
-          itemCount: 2,
+          // max 10 manager for free
+          itemCount: 10,
           itemBuilder: (BuildContext context, int index) => Card(
-            child: _ManagerCard(),
+            child: _MemberCard(),
           ),
         ),
       ),
@@ -52,7 +52,7 @@ class _ManagerListCards extends StatelessWidget {
   }
 }
 
-class _ManagerCard extends StatelessWidget {
+class _MemberCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -63,7 +63,7 @@ class _ManagerCard extends StatelessWidget {
           FlutterLogo(size: 70),
           ConstrainedBox(
             constraints: BoxConstraints(maxWidth: 100),
-            child: Text('Manager Name'),
+            child: Text('Member Name'),
           ),
         ],
       ),

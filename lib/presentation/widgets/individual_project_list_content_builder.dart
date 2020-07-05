@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:simple_flutter/presentation/pages/individual_project/local_widgets/project_info_header_scroll.dart';
 import 'package:simple_flutter/presentation/pages/individual_project/local_widgets/project_info_managers_list.dart';
+import 'package:simple_flutter/presentation/pages/individual_project/local_widgets/project_info_members_list.dart';
 
 class ProjectListContent extends StatelessWidget {
   // final List<Widget> innerContent = [];
@@ -18,11 +19,8 @@ class ProjectListContent extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           ProjecInfotHeader(),
-          ManagerInfoPresentation(),
-          Container(
-            height: 50,
-            child: Center(child: Text('final')),
-          ),
+          ManagerListCard(),
+          MembersListCard(),
         ],
       ),
     );

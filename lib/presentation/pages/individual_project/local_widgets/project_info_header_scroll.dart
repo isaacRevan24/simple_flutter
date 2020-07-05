@@ -47,3 +47,5 @@ class ProjecInfotHeader extends StatelessWidget {
     );
   }
 }
+
+// TODO: Quitar la animación de arriba de bouncing

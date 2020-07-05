@@ -32,6 +32,5 @@ AppBar buildAppBar() {
         onPressed: () {},
       ),
     ],
-    backgroundColor: Colors.white,
   );
 }
