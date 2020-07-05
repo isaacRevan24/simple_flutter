@@ -9,12 +9,9 @@ const BoxDecoration roundedConentAreaDecoration = BoxDecoration(
     ));
 
 class ProjectLevelsLayout extends StatelessWidget {
-  const ProjectLevelsLayout({
-    Key key,
-  }) : super(key: key);
+  final List<Widget> projectLevelsContent;
 
-  final int listSize = 25;
-
+  ProjectLevelsLayout(this.projectLevelsContent);
   @override
   Widget build(BuildContext context) {
     return SizedBox.expand(
@@ -27,7 +24,10 @@ class ProjectLevelsLayout extends StatelessWidget {
         ) {
           return Container(
             decoration: roundedConentAreaDecoration,
-            child: ProjectListContent(scrollController: scrollController),
+            child: ProjectListContent(
+              scrollController: scrollController,
+              innerContent: projectLevelsContent,
+            ),
           );
         },
       ),
