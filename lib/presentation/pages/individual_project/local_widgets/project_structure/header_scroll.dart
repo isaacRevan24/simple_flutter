@@ -16,18 +16,25 @@ class ProjecInfotHeader extends StatelessWidget {
       child: Column(
         children: <Widget>[
           ScrollDivider(),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-            alignment: Alignment.topLeft,
-            child: Text(
-              'Description',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 15,
-              ),
-            ),
-          ),
+          _SubTitle(),
         ],
+      ),
+    );
+  }
+}
+
+class _SubTitle extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+      alignment: Alignment.topLeft,
+      child: Text(
+        'Description',
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 15,
+        ),
       ),
     );
   }

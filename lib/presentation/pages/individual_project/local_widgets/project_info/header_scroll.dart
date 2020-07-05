@@ -21,19 +21,15 @@ class ProjecInfotHeader extends StatelessWidget {
       child: Column(
         children: <Widget>[
           ScrollDivider(),
-          Subtitle(),
-          ProjectDescription(),
+          _Subtitle(),
+          _ProjectDescription(),
         ],
       ),
     );
   }
 }
 
-class ProjectDescription extends StatelessWidget {
-  const ProjectDescription({
-    Key key,
-  }) : super(key: key);
-
+class _ProjectDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -46,11 +42,7 @@ class ProjectDescription extends StatelessWidget {
   }
 }
 
-class Subtitle extends StatelessWidget {
-  const Subtitle({
-    Key key,
-  }) : super(key: key);
-
+class _Subtitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
