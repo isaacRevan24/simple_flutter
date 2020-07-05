@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'project_info_percent_bar.dart';
+import 'project_logo.dart';
 
 class ProjectInfoBackground extends StatelessWidget {
   final String direction = '/images/space.jpg';
@@ -13,13 +14,7 @@ class ProjectInfoBackground extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              Container(
-                child: Center(
-                  child: FlutterLogo(
-                    size: 100,
-                  ),
-                ),
-              ),
+              ProjectLogo(),
               ProjectInfoPercentBar(),
             ],
           ),
