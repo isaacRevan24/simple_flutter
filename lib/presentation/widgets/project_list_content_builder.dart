@@ -12,7 +12,7 @@ class ProjectListContent extends StatelessWidget {
       controller: scrollController,
       itemCount: listSize,
       itemBuilder: (BuildContext context, int index) {
-        // Number 0 is the header and the lastone is the footer
+        // Number 0 is the header and the last one is the footer
         if (index == 0) {
           return Container(
             decoration: BoxDecoration(

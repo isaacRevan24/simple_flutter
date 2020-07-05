@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:simple_flutter/presentation/widgets/project_list_content_builder.dart';
 
+const BoxDecoration roundedConentAreaDecoration = BoxDecoration(
+    color: Colors.red,
+    borderRadius: BorderRadius.only(
+      topRight: Radius.circular(40),
+      topLeft: Radius.circular(40),
+    ));
+
 class ProjectLevelsLayout extends StatelessWidget {
   const ProjectLevelsLayout({
     Key key,
@@ -14,15 +21,12 @@ class ProjectLevelsLayout extends StatelessWidget {
       child: DraggableScrollableSheet(
         initialChildSize: 0.7,
         minChildSize: 0.7,
-        builder: (BuildContext context, ScrollController scrollController) {
+        builder: (
+          BuildContext context,
+          ScrollController scrollController,
+        ) {
           return Container(
-            decoration: BoxDecoration(
-              color: Colors.red,
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(40),
-                topLeft: Radius.circular(40),
-              ),
-            ),
+            decoration: roundedConentAreaDecoration,
             child: ProjectListContent(scrollController: scrollController),
           );
         },
@@ -31,6 +35,9 @@ class ProjectLevelsLayout extends StatelessWidget {
   }
 }
 
+// funcion local para testear el layout de info project
+
+// TODO: Eliminar esta funcion de testin
 // TODO: La animación de los items de la lista se ven en el background, hacer que se termine su animación en la curva
 // TODO: Refactor esta pagina
 // TODO: Arreglar el color azul que se ve mal en contraste del fondo
