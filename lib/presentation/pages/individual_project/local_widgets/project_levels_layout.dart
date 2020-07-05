@@ -37,7 +37,4 @@ class ProjectLevelsLayout extends StatelessWidget {
 
 // funcion local para testear el layout de info project
 
-// TODO: Eliminar esta funcion de testin
 // TODO: La animación de los items de la lista se ven en el background, hacer que se termine su animación en la curva
-// TODO: Refactor esta pagina
-// TODO: Arreglar el color azul que se ve mal en contraste del fondo

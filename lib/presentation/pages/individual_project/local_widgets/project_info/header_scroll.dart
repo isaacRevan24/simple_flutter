@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import '../scroll_divider.dart';
 
 const BoxDecoration firstItemDecoration = BoxDecoration(
   borderRadius: BorderRadius.only(
@@ -18,31 +20,48 @@ class ProjecInfotHeader extends StatelessWidget {
       decoration: firstItemDecoration,
       child: Column(
         children: <Widget>[
-          Divider(
-            color: Colors.grey,
-            indent: 100,
-            endIndent: 100,
-            thickness: 2,
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-            alignment: Alignment.topLeft,
-            child: Text(
-              'Description',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 15,
-              ),
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 25),
-            child: Text(
-              descriptionTest,
-              style: TextStyle(fontSize: 15),
-            ),
-          ),
+          ScrollDivider(),
+          Subtitle(),
+          ProjectDescription(),
         ],
+      ),
+    );
+  }
+}
+
+class ProjectDescription extends StatelessWidget {
+  const ProjectDescription({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 25),
+      child: Text(
+        descriptionTest,
+        style: TextStyle(fontSize: 15),
+      ),
+    );
+  }
+}
+
+class Subtitle extends StatelessWidget {
+  const Subtitle({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+      alignment: Alignment.topLeft,
+      child: Text(
+        'Description',
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 15,
+        ),
       ),
     );
   }
