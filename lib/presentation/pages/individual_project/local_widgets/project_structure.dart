@@ -7,7 +7,13 @@ import 'project_structure/sections_list.dart';
 //TODO: replace with the respective widgets
 import 'project_structure/header_scroll.dart';
 
-final List<String> sectionNames = ['Backend', 'frontend', 'bd'];
+final List<String> sectionNames = [
+  'Backend',
+  'frontend',
+  'bd',
+  'negocios',
+  'marketing'
+];
 
 class ProjectStructure extends StatelessWidget {
   final List<Widget> innerContent = <Widget>[

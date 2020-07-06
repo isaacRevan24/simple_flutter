@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:simple_flutter/presentation/widgets/percent_circular_bar.dart';
 
 class SectionCard extends StatelessWidget {
   const SectionCard({
-    Key key,
     @required this.sectionsName,
     @required this.index,
-  }) : super(key: key);
+  });
 
   final List<String> sectionsName;
   final int index;
@@ -13,8 +13,11 @@ class SectionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Center(
-        child: Text('${sectionsName[index]}'),
+      child: ListTile(
+        contentPadding: EdgeInsets.all(5),
+        leading: GeneralProjectIndicator(),
+        title: Text('${sectionsName[index]}'),
+        onTap: () => {},
       ),
     );
   }
