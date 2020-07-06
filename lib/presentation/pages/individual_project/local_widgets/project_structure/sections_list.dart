@@ -1,9 +1,23 @@
 import 'package:flutter/material.dart';
+import 'section_card.dart';
 
 class SectionList extends StatelessWidget {
-  // final List<Widget> sectionsName;
+  final List<String> sectionsName;
 
-  // SectionList({@required this.sectionsName});
+  SectionList({@required this.sectionsName});
+  @override
+  Widget build(BuildContext context) {
+    return SectionsListBuilding(sectionsName: sectionsName);
+  }
+}
+
+class SectionsListBuilding extends StatelessWidget {
+  const SectionsListBuilding({
+    @required this.sectionsName,
+  });
+
+  final List<String> sectionsName;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -11,15 +25,16 @@ class SectionList extends StatelessWidget {
       child: ConstrainedBox(
         constraints: BoxConstraints(maxHeight: 293, minHeight: 25),
         child: Container(
+          color: Colors.red,
           width: double.infinity,
           child: ListView.builder(
             physics: ClampingScrollPhysics(),
             shrinkWrap: true,
             scrollDirection: Axis.vertical,
-            // max 5 manager
-            itemCount: 8,
-            itemBuilder: (BuildContext context, int index) => Card(
-              child: FlutterLogo(size: 50),
+            itemCount: sectionsName.length,
+            itemBuilder: (BuildContext context, int index) => SectionCard(
+              sectionsName: sectionsName,
+              index: index,
             ),
           ),
         ),

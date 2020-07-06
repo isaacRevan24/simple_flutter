@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 AppBar buildAppBar() {
   return AppBar(
+    backgroundColor: Colors.white,
+    elevation: 0,
     bottom: TabBar(
       labelStyle: TextStyle(color: Colors.black),
       unselectedLabelColor: Colors.grey,
@@ -15,7 +17,6 @@ AppBar buildAppBar() {
         ),
       ],
     ),
-    elevation: 0,
     title: Text(
       'Your projects',
       style: TextStyle(
