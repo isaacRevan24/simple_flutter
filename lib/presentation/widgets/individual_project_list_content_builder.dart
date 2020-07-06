@@ -14,7 +14,6 @@ class ProjectListContent extends StatelessWidget {
     return SingleChildScrollView(
       controller: scrollController,
       child: Column(
-        mainAxisSize: MainAxisSize.min,
         children: innerContent,
       ),
     );

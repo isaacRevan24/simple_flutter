@@ -27,7 +27,7 @@ class _SubTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+      padding: EdgeInsets.only(left: 25, right: 25, top: 10),
       alignment: Alignment.topLeft,
       child: Text(
         'Project sections',
