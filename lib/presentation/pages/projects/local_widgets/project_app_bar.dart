@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// App bar method that build project app bar
 AppBar buildAppBar() {
   return AppBar(
     backgroundColor: Colors.white,
@@ -10,7 +11,7 @@ AppBar buildAppBar() {
   );
 }
 
-/// Project app bar buttons
+/// List of action buttons of the project app bar (filter)
 List<Widget> projectAppBarActionButton() {
   return <Widget>[
     IconButton(

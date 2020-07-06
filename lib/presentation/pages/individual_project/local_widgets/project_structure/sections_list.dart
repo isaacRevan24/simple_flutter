@@ -25,7 +25,6 @@ class SectionsListBuilding extends StatelessWidget {
       child: ConstrainedBox(
         constraints: BoxConstraints(maxHeight: 293, minHeight: 25),
         child: Container(
-          color: Colors.red,
           width: double.infinity,
           child: ListView.builder(
             physics: ClampingScrollPhysics(),
