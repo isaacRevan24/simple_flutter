@@ -18,7 +18,7 @@ const List<String> sectionNames = [
 ];
 
 // Variable 2
-// final List<String> tasksCounter = ['100', '70', '30'];
+final List<String> tasksCounter = ['100', '70', '30'];
 
 class ProjectStructure extends StatelessWidget {
   /// Lista de widgets de la sección de project_structure, en el orden de presentación.
@@ -27,7 +27,9 @@ class ProjectStructure extends StatelessWidget {
     SectionList(
       sectionsName: sectionNames,
     ),
-    ProjectTasksCounters(),
+    ProjectTasksCounters(
+      tasksCounter: tasksCounter,
+    ),
     // SectionList(sectionsName: sectionsName)
   ];
   @override

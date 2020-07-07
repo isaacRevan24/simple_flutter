@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 /// ProjectTasksCounters muestra el contador de tareas totales, tareas terminadas y tareas pendientes.
 class ProjectTasksCounters extends StatelessWidget {
-  final List<String> tasksCounter = ['100', '70', '30'];
+  final List<String> tasksCounter;
 
-  // ProjectTasksCounters({this.percents});
+  ProjectTasksCounters({@required this.tasksCounter});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -117,6 +117,4 @@ class ProjectTasksCounters extends StatelessWidget {
   }
 }
 
-/// Contadores de tareas, en el que dice el total de tareas, tareas realizadas y pendientes
-
-/// Muestra el tipo de % (total, realizadas y pendientes)
+// TODO: ver como hacer el contenedor del numero redondo
