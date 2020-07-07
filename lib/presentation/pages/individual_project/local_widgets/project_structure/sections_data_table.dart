@@ -84,3 +84,5 @@ class SectionsTable extends StatelessWidget {
     );
   }
 }
+
+// TODO: Agregar un fractionallySizeBox para la tabla.
