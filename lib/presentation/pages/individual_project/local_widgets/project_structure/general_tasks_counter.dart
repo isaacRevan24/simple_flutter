@@ -18,9 +18,14 @@ class ProjectTasksCounters extends StatelessWidget {
   /// Titulo de la sección
   Container _title() {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 15),
+      padding: EdgeInsets.only(top: 15, bottom: 20),
       // color: Colors.red,
-      child: Text('Project tasks counter'),
+      child: Text(
+        'Project tasks counter',
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+      ),
     );
   }
 
@@ -48,7 +53,12 @@ class ProjectTasksCounters extends StatelessWidget {
             Text('Total: '),
             Container(
               color: Colors.blue,
-              child: Text('${tasksCounter[0]}'),
+              child: Text(
+                '${tasksCounter[0]}',
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
             ),
           ],
         );
@@ -57,12 +67,19 @@ class ProjectTasksCounters extends StatelessWidget {
         return Row(
           children: <Widget>[
             Container(
-              child: Icon(Icons.assignment_turned_in),
+              child: Icon(
+                Icons.assignment_turned_in,
+              ),
             ),
             Text('Realizadas: '),
             Container(
               color: Colors.green,
-              child: Text('${tasksCounter[1]}'),
+              child: Text(
+                '${tasksCounter[1]}',
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
             ),
           ],
         );
@@ -76,7 +93,12 @@ class ProjectTasksCounters extends StatelessWidget {
             Text('Pendientes: '),
             Container(
               color: Colors.grey,
-              child: Text('${tasksCounter[2]}'),
+              child: Text(
+                '${tasksCounter[2]}',
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
             ),
           ],
         );
