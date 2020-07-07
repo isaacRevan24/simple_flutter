@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 /// ProjectTasksCounters muestra el contador de tareas totales, tareas terminadas y tareas pendientes.
 class ProjectTasksCounters extends StatelessWidget {
-  final List<String> percents = ['40', '70', '20'];
+  final List<String> tasksCounter = ['100', '70', '30'];
 
   // ProjectTasksCounters({this.percents});
   @override
@@ -24,6 +24,7 @@ class ProjectTasksCounters extends StatelessWidget {
     );
   }
 
+  /// Retorna una fila con los 3 %
   Widget _percentageRow() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -35,16 +36,20 @@ class ProjectTasksCounters extends StatelessWidget {
     );
   }
 
+  /// Dependiendo del inice devuelve (1 = total, 2 = realizadas y 3 = pendientes)
   Row _percentIndicator(int index) {
     switch (index) {
       case 0:
         return Row(
           children: <Widget>[
             Container(
-              color: Colors.red,
-              child: FlutterLogo(size: 30),
+              child: Icon(Icons.clear_all),
             ),
-            Text('Total: ${percents[0]}'),
+            Text('Total: '),
+            Container(
+              color: Colors.blue,
+              child: Text('${tasksCounter[0]}'),
+            ),
           ],
         );
         break;
@@ -52,10 +57,13 @@ class ProjectTasksCounters extends StatelessWidget {
         return Row(
           children: <Widget>[
             Container(
-              color: Colors.red,
-              child: FlutterLogo(size: 30),
+              child: Icon(Icons.assignment_turned_in),
             ),
-            Text('Realizadas: ${percents[1]}'),
+            Text('Realizadas: '),
+            Container(
+              color: Colors.green,
+              child: Text('${tasksCounter[1]}'),
+            ),
           ],
         );
         break;
@@ -63,10 +71,13 @@ class ProjectTasksCounters extends StatelessWidget {
         return Row(
           children: <Widget>[
             Container(
-              color: Colors.red,
-              child: FlutterLogo(size: 30),
+              child: Icon(Icons.pause_circle_outline),
             ),
-            Text('Pendientes: ${percents[2]}'),
+            Text('Pendientes: '),
+            Container(
+              color: Colors.grey,
+              child: Text('${tasksCounter[2]}'),
+            ),
           ],
         );
         break;
@@ -74,10 +85,9 @@ class ProjectTasksCounters extends StatelessWidget {
         return Row(
           children: <Widget>[
             Container(
-              color: Colors.red,
               child: FlutterLogo(size: 30),
             ),
-            Text('100'),
+            Text('Sin tareas'),
           ],
         );
         break;
