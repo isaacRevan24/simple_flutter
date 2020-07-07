@@ -41,3 +41,5 @@ class SectionsListBuilding extends StatelessWidget {
     );
   }
 }
+
+// TODO: Agregar un indicador de scroll para indicar cuando hay mas de 4 items
