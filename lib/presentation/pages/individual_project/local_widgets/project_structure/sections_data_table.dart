@@ -86,3 +86,5 @@ class SectionsTable extends StatelessWidget {
 }
 
 // TODO: Agregar un fractionallySizeBox para la tabla.
+// TODO: Poner un wrap en el texto para que no haga overload
+// TODO: Ver como implementar parametros
