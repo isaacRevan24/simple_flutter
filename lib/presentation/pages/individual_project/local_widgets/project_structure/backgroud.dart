@@ -13,7 +13,7 @@ class ProjectStructureBackground extends StatelessWidget {
           children: <Widget>[
             Center(
               child: Container(
-                padding: EdgeInsets.only(top: 10),
+                // padding: EdgeInsets.only(top: 10),
                 child: Text(
                   'Avances',
                   style: TextStyle(fontSize: 20),
@@ -68,15 +68,31 @@ class SectionsLabel extends StatelessWidget {
                   ),
                   Flexible(
                     flex: 1,
-                    child: Container(
-                      child: Center(
-                        child: Text(
-                          '$key',
-                          style: TextStyle(
-                            fontSize: 15,
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                          width: 20,
+                        ),
+                        ClipOval(
+                          child: Container(
+                            color: Colors.teal,
+                            height: 15,
+                            width: 15,
                           ),
                         ),
-                      ),
+                        Container(
+                          width: 10,
+                        ),
+                        Container(
+                          padding: EdgeInsets.only(bottom: 5),
+                          child: Text(
+                            '$key',
+                            style: TextStyle(
+                              fontSize: 15,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -88,3 +104,5 @@ class SectionsLabel extends StatelessWidget {
     );
   }
 }
+
+// TODO: ver como hacer colores para cada sección
