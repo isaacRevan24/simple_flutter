@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// SectionsTable muesta una table donde muestra el nombre de la
-/// sección con el número de tareas pendientes y realizadas
 class SectionsTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

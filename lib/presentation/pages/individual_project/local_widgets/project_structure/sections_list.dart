@@ -53,12 +53,44 @@ class SectionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: ListTile(
-        contentPadding: EdgeInsets.all(5),
-        leading: GeneralProjectIndicator(),
-        title: Text('${sectionsName[index]}'),
-        onTap: () => {},
+    return AnimatedContainer(
+      duration: Duration(seconds: 2),
+      curve: Curves.easeIn,
+      child: Card(
+        child: InkWell(
+          onTap: () {},
+          child: Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                GeneralProjectIndicator(),
+                SizedBox(
+                  width: 60,
+                  child: Center(child: Text('${sectionsName[index]}')),
+                ),
+                Column(
+                  children: <Widget>[
+                    Icon(
+                      Icons.assignment_turned_in,
+                      color: Colors.green,
+                    ),
+                    Text('20'),
+                  ],
+                ),
+                Column(
+                  children: <Widget>[
+                    Icon(
+                      Icons.pause_circle_outline,
+                      color: Colors.grey,
+                    ),
+                    Text('9'),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
