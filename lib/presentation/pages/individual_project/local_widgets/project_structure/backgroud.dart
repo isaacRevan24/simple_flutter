@@ -106,3 +106,4 @@ class SectionsLabel extends StatelessWidget {
 }
 
 // TODO: ver como hacer colores para cada sección
+// TODO: Hacer que si el titulo de la sección es mas largo se mueva abajo

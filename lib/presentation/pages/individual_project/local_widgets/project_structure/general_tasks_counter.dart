@@ -33,11 +33,17 @@ class ProjectTasksCounters extends StatelessWidget {
   Widget _percentageRow() {
     return Container(
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
+          Container(
+            width: 25,
+          ),
           _percentIndicator(0),
           _percentIndicator(1),
           _percentIndicator(2),
+          Container(
+            width: 25,
+          ),
         ],
       ),
     );
