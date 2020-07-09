@@ -5,7 +5,6 @@ import 'project_structure/backgroud.dart';
 import 'project_structure/sections_list.dart';
 import 'project_structure/general_tasks_counter.dart';
 import 'project_structure/header_scroll.dart';
-import 'project_structure/sections_data_table.dart';
 import 'project_structure/pie_chart.dart';
 
 // Test variable
@@ -30,7 +29,6 @@ final List<Widget> innerContent = <Widget>[
     tasksCounter: tasksCounter,
   ),
   ProjectPieChart(),
-  SectionsTable(),
   // SectionList(sectionsName: sectionsName)
 ];
 
