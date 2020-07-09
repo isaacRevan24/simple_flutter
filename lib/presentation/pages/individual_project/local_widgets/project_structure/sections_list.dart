@@ -72,7 +72,7 @@ class SectionCard extends StatelessWidget {
                 Column(
                   children: <Widget>[
                     Icon(
-                      Icons.assignment_turned_in,
+                      Icons.done_outline,
                       color: Colors.green,
                     ),
                     Text('20'),
@@ -85,6 +85,15 @@ class SectionCard extends StatelessWidget {
                       color: Colors.grey,
                     ),
                     Text('9'),
+                  ],
+                ),
+                Column(
+                  children: <Widget>[
+                    Icon(
+                      Icons.clear_all,
+                      color: Colors.grey,
+                    ),
+                    Text('29'),
                   ],
                 ),
               ],
