@@ -9,6 +9,7 @@ class ProjectStructureBackground extends StatelessWidget {
       child: Container(
         color: Colors.white,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Center(
               child: Container(
@@ -39,39 +40,46 @@ class SectionsLabel extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: ConstrainedBox(
-        constraints: BoxConstraints(maxHeight: 300, minHeight: 25),
+        constraints: BoxConstraints(maxHeight: 120, minHeight: 25),
         child: Container(
-            width: double.infinity,
-            child: ListView.builder(
-                physics: ClampingScrollPhysics(),
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                itemCount: sectionsName.length,
-                itemBuilder: (BuildContext context, int index) {
-                  String key = sectionsName.keys.elementAt(index);
-                  double value = sectionsName.values.elementAt(index);
-                  return Row(
-                    children: <Widget>[
-                      Flexible(
-                        flex: 1,
-                        child: Expanded(
-                          child: LinearPercentIndicator(
-                            lineHeight: 8.0,
-                            percent: value,
-                            progressColor: Colors.lightBlueAccent,
+          child: ListView.builder(
+            physics: ClampingScrollPhysics(),
+            shrinkWrap: true,
+            scrollDirection: Axis.vertical,
+            itemCount: sectionsName.length,
+            itemBuilder: (BuildContext context, int index) {
+              String key = sectionsName.keys.elementAt(index);
+              double value = sectionsName.values.elementAt(index);
+              return Row(
+                children: <Widget>[
+                  Flexible(
+                    flex: 1,
+                    child: Expanded(
+                      child: LinearPercentIndicator(
+                        lineHeight: 8.0,
+                        percent: value,
+                        progressColor: Colors.lightBlueAccent,
+                      ),
+                    ),
+                  ),
+                  Flexible(
+                    flex: 1,
+                    child: Container(
+                      child: Center(
+                        child: Text(
+                          '$key',
+                          style: TextStyle(
+                            fontSize: 15,
                           ),
                         ),
                       ),
-                      Flexible(
-                        flex: 1,
-                        child: Container(
-                          padding: EdgeInsets.only(left: 20),
-                          child: Center(child: Text('$key')),
-                        ),
-                      ),
-                    ],
-                  );
-                })),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        ),
       ),
     );
   }
