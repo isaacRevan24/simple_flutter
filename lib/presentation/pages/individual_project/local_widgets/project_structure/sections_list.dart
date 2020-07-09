@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:simple_flutter/presentation/widgets/percent_circular_bar.dart';
+import '../../../../widgets/percent_circular_bar.dart';
 
 class SectionList extends StatelessWidget {
   final List<String> sectionsName;

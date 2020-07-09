@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
-import 'package:simple_flutter/presentation/widgets/custom-widget.dart';
-import 'package:simple_flutter/presentation/pages/home/page_home.dart';
-import 'package:simple_flutter/presentation/pages/tasks/page_tasks.dart';
-import 'package:simple_flutter/presentation/pages/projects/page_projects.dart';
-import 'package:simple_flutter/presentation/pages/profile/page_profile.dart';
+
+import '../widgets/custom-widget.dart';
+import '../pages/home/page_home.dart';
+import '../pages/tasks/page_tasks.dart';
+import '../pages/projects/page_projects.dart';
+import '../pages/profile/page_profile.dart';
 
 class SimpleBody extends StatefulWidget {
   SimpleBody({Key key}) : super(key: key);

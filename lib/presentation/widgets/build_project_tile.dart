@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'percent_circular_bar.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:simple_flutter/presentation/pages/individual_project/individual_project.dart';
+
+import '../pages/individual_project/individual_project.dart';
 
 class BuildProjectTile extends StatelessWidget {
   final int index;

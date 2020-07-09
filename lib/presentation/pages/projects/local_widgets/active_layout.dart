@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:simple_flutter/presentation/widgets/build_project_tile.dart';
+import '../../../widgets/build_project_tile.dart';
 
 class ActiveProjects extends StatefulWidget {
   const ActiveProjects({Key key}) : super(key: key);
