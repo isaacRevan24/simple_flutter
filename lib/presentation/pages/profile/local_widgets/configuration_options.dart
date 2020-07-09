@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+
+import 'configuration_pages/profile_information/page_profile_information.dart';
+import 'configuration_pages/configuration/page_configuration.dart';
+import 'configuration_pages/notification/page_notification.dart';
+import 'configuration_pages/subscription/page_subscription.dart';
+
 import 'theme_switch.dart';
-// TODO: Cambiar forma de exportar paginas
-import 'package:simple_flutter/presentation/pages/configuration_pages/profile_information/page_profile_information.dart';
-import 'package:simple_flutter/presentation/pages/configuration_pages/subscription/page_subscription.dart';
-import 'package:simple_flutter/presentation/pages/configuration_pages/configuration/page_configuration.dart';
-import 'package:simple_flutter/presentation/pages/configuration_pages/notification/page_notification.dart';
 
 class ConfigurationOptions extends StatelessWidget {
   @override

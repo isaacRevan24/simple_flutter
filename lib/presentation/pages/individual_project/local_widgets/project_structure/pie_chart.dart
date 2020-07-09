@@ -17,7 +17,7 @@ class _ProjectPieChartState extends State<ProjectPieChart> {
     dataMap.putIfAbsent("Negocios", () => 3);
 
     return Container(
-      padding: EdgeInsets.only(top: 25),
+      padding: EdgeInsets.symmetric(vertical: 25),
       child: Column(
         children: <Widget>[
           Row(
