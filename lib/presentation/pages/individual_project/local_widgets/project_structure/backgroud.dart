@@ -13,8 +13,11 @@ class ProjectStructureBackground extends StatelessWidget {
           children: <Widget>[
             Center(
               child: Container(
-                padding: EdgeInsets.symmetric(vertical: 5),
-                child: Text('Avances'),
+                padding: EdgeInsets.only(top: 10),
+                child: Text(
+                  'Avances',
+                  style: TextStyle(fontSize: 20),
+                ),
               ),
             ),
             SectionsLabel(),
@@ -40,8 +43,9 @@ class SectionsLabel extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: ConstrainedBox(
-        constraints: BoxConstraints(maxHeight: 120, minHeight: 25),
+        constraints: BoxConstraints(maxHeight: 120, minHeight: 50),
         child: Container(
+          alignment: AlignmentDirectional.center,
           child: ListView.builder(
             physics: ClampingScrollPhysics(),
             shrinkWrap: true,
