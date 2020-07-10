@@ -12,6 +12,7 @@ class HeroSectionInfo extends StatelessWidget {
     );
   }
 
+  /// AppBar de hero section info
   AppBar _sectionDetailAppbar(BuildContext context) {
     return AppBar(
       elevation: 0,
@@ -31,6 +32,7 @@ class HeroSectionInfo extends StatelessWidget {
     );
   }
 
+  /// El contenedor que engloba la barra, los botones y la lista de tareas
   Container _sectionDetails() {
     return Container(
       color: Colors.white,
@@ -42,23 +44,14 @@ class HeroSectionInfo extends StatelessWidget {
             children: <Widget>[
               Flexible(
                 flex: 2,
-                child: Container(
-                  color: Colors.white,
-                  child: LinearPercentIndicator(
-                    lineHeight: 20.0,
-                    percent: 0.8,
-                    center: Text("80.0%"),
-                    linearStrokeCap: LinearStrokeCap.roundAll,
-                    progressColor: Colors.green,
-                  ),
-                ),
+                child: _percentBar(),
               ),
               Flexible(
                 flex: 8,
                 child: Column(
                   children: <Widget>[
                     _header(),
-                    listTasks(),
+                    _listTasks(),
                   ],
                 ),
               ),
@@ -69,7 +62,22 @@ class HeroSectionInfo extends StatelessWidget {
     );
   }
 
-  Expanded listTasks() {
+  /// Muestra la barra de % arriba
+  Container _percentBar() {
+    return Container(
+      color: Colors.white,
+      child: LinearPercentIndicator(
+        lineHeight: 20.0,
+        percent: 0.8,
+        center: Text("80.0%"),
+        linearStrokeCap: LinearStrokeCap.roundAll,
+        progressColor: Colors.green,
+      ),
+    );
+  }
+
+  /// Crea la lista de tareas realizadas o pendientes dependiendo de la lista
+  Expanded _listTasks() {
     return Expanded(
       child: ListView.builder(
         physics: ClampingScrollPhysics(),
@@ -86,6 +94,7 @@ class HeroSectionInfo extends StatelessWidget {
               title: Text('Titulo de la tarea'),
               subtitle: Text('Explicación de la taréa'),
               trailing: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   FlutterLogo(
                     size: 20,
@@ -100,6 +109,7 @@ class HeroSectionInfo extends StatelessWidget {
     );
   }
 
+  /// Tiene los botones Realizadas y Pendientes
   Container _header() {
     return Container(
       color: Colors.white,
@@ -136,3 +146,4 @@ class HeroSectionInfo extends StatelessWidget {
 }
 
 // TODO: Hacer que al tocar el boton pendiente y el realizado mande la info a la lista
+// TODO: Al dejar apretado el tile te debe salir una opción de ir a esa tarea.
