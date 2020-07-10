@@ -32,7 +32,7 @@ class HeroSectionInfo extends StatelessWidget {
     return Center(
       child: FractionallySizedBox(
         widthFactor: 0.8,
-        heightFactor: 0.7,
+        heightFactor: 0.75,
         child: Column(
           children: <Widget>[
             Flexible(
