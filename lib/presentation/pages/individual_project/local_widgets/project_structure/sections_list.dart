@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import '../../../../widgets/percent_circular_bar.dart';
+import 'hero_section_info.dart';
 
 class SectionList extends StatelessWidget {
   final List<String> sectionsName;
@@ -58,7 +60,16 @@ class SectionCard extends StatelessWidget {
       curve: Curves.easeIn,
       child: Card(
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.push(
+              context,
+              PageTransition(
+                duration: Duration(milliseconds: 200),
+                type: PageTransitionType.downToUp,
+                child: HeroSectionInfo(),
+              ),
+            );
+          },
           child: Padding(
             padding: const EdgeInsets.all(5.0),
             child: Row(

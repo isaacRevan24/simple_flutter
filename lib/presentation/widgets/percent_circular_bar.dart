@@ -11,8 +11,6 @@ class _GeneralProjectIndicatorState extends State<GeneralProjectIndicator> {
   @override
   Widget build(BuildContext context) {
     return CircularPercentIndicator(
-      animation: true,
-      animationDuration: 1200,
       radius: 52.0,
       lineWidth: 4.0,
       percent: 0.90,

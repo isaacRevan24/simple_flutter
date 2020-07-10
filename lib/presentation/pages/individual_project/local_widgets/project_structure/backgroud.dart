@@ -58,12 +58,10 @@ class SectionsLabel extends StatelessWidget {
                 children: <Widget>[
                   Flexible(
                     flex: 1,
-                    child: Expanded(
-                      child: LinearPercentIndicator(
-                        lineHeight: 8.0,
-                        percent: value,
-                        progressColor: Colors.lightBlueAccent,
-                      ),
+                    child: LinearPercentIndicator(
+                      lineHeight: 8.0,
+                      percent: value,
+                      progressColor: Colors.lightBlueAccent,
                     ),
                   ),
                   Flexible(
