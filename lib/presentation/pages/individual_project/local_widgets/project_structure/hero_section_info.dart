@@ -12,48 +12,6 @@ class HeroSectionInfo extends StatelessWidget {
     );
   }
 
-  Container _sectionDetails() {
-    return Container(
-      color: Colors.white,
-      child: Center(
-        child: FractionallySizedBox(
-          widthFactor: 0.8,
-          heightFactor: 0.75,
-          child: Column(
-            children: <Widget>[
-              Flexible(
-                flex: 2,
-                child: Container(
-                  color: Colors.white,
-                  child: LinearPercentIndicator(
-                    lineHeight: 20.0,
-                    percent: 0.8,
-                    center: Text("80.0%"),
-                    linearStrokeCap: LinearStrokeCap.roundAll,
-                    progressColor: Colors.green,
-                  ),
-                ),
-              ),
-              Flexible(
-                flex: 8,
-                child: Container(
-                  color: Colors.blue,
-                  child: Column(
-                    children: <Widget>[
-                      Center(
-                        child: Text('data'),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
   AppBar _sectionDetailAppbar(BuildContext context) {
     return AppBar(
       elevation: 0,
@@ -72,4 +30,109 @@ class HeroSectionInfo extends StatelessWidget {
       backgroundColor: Colors.white,
     );
   }
+
+  Container _sectionDetails() {
+    return Container(
+      color: Colors.white,
+      child: Center(
+        child: FractionallySizedBox(
+          widthFactor: 0.8,
+          heightFactor: 0.88,
+          child: Column(
+            children: <Widget>[
+              Flexible(
+                flex: 2,
+                child: Container(
+                  color: Colors.white,
+                  child: LinearPercentIndicator(
+                    lineHeight: 20.0,
+                    percent: 0.8,
+                    center: Text("80.0%"),
+                    linearStrokeCap: LinearStrokeCap.roundAll,
+                    progressColor: Colors.green,
+                  ),
+                ),
+              ),
+              Flexible(
+                flex: 8,
+                child: Column(
+                  children: <Widget>[
+                    _header(),
+                    listTasks(),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Expanded listTasks() {
+    return Expanded(
+      child: ListView.builder(
+        physics: ClampingScrollPhysics(),
+        shrinkWrap: true,
+        scrollDirection: Axis.vertical,
+        itemCount: 9,
+        itemBuilder: (BuildContext context, int index) {
+          return Card(
+            child: ListTile(
+              leading: Icon(
+                Icons.done_outline,
+                color: Colors.green,
+              ),
+              title: Text('Titulo de la tarea'),
+              subtitle: Text('Explicación de la taréa'),
+              trailing: Column(
+                children: <Widget>[
+                  FlutterLogo(
+                    size: 20,
+                  ),
+                  Text('Nombre'),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  Container _header() {
+    return Container(
+      color: Colors.white,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 5.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            FlatButton(
+              color: Colors.indigo,
+              onPressed: () => {},
+              child: Text(
+                'Realizadas',
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0),
+              ),
+            ),
+            FlatButton(
+              color: Colors.pink,
+              onPressed: () => {},
+              child: Text(
+                'Pendientes',
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30.0),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
+
+// TODO: Hacer que al tocar el boton pendiente y el realizado mande la info a la lista
