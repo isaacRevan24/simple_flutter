@@ -6,6 +6,7 @@ class HeroSectionInfo extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          elevation: 0,
           leading: IconButton(
             icon: Icon(
               Icons.arrow_back_ios,
@@ -19,27 +20,34 @@ class HeroSectionInfo extends StatelessWidget {
           ),
           backgroundColor: Colors.white,
         ),
-        body: Center(
-          child: FractionallySizedBox(
-            widthFactor: 0.8,
-            heightFactor: 0.7,
-            child: Column(
-              children: <Widget>[
-                Flexible(
-                  flex: 1,
-                  child: Container(
-                    color: Colors.brown,
-                  ),
-                ),
-                Flexible(
-                  flex: 8,
-                  child: Container(
-                    color: Colors.blue,
-                  ),
-                ),
-              ],
+        body: Container(
+          color: Colors.white,
+          child: _sectionDetails(),
+        ),
+      ),
+    );
+  }
+
+  Center _sectionDetails() {
+    return Center(
+      child: FractionallySizedBox(
+        widthFactor: 0.8,
+        heightFactor: 0.7,
+        child: Column(
+          children: <Widget>[
+            Flexible(
+              flex: 1,
+              child: Container(
+                color: Colors.brown,
+              ),
             ),
-          ),
+            Flexible(
+              flex: 8,
+              child: Container(
+                color: Colors.blue,
+              ),
+            ),
+          ],
         ),
       ),
     );
