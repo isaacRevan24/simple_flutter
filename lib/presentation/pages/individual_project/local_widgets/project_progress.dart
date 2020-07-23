@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'project_progress/drop_down_buttons.dart';
 
 class ProjectProgress extends StatelessWidget {
   @override
@@ -8,17 +9,45 @@ class ProjectProgress extends StatelessWidget {
       child: Column(
         children: <Widget>[
           _searchBar(),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                DropDownXXX(),
-                DropDownXXX(),
-                DropDownXXX(),
-              ],
+          _dropDownButtonsList(),
+          _taskListBuilder()
+        ],
+      ),
+    );
+  }
+
+  /// Lista de tareas
+  Expanded _taskListBuilder() {
+    return Expanded(
+      child: Container(
+        height: 140,
+        color: Colors.white,
+        child: ListView.builder(
+          physics: ClampingScrollPhysics(),
+          shrinkWrap: true,
+          scrollDirection: Axis.vertical,
+          itemCount: 4,
+          itemBuilder: (BuildContext context, int index) => Container(
+            height: 40,
+            child: Center(
+              child: Text("dddd"),
             ),
           ),
+        ),
+      ),
+    );
+  }
+
+  /// Lista de botones drop down
+  Padding _dropDownButtonsList() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          DropDownXXX(),
+          DropDownXXX(),
+          DropDownXXX(),
         ],
       ),
     );
@@ -27,49 +56,12 @@ class ProjectProgress extends StatelessWidget {
   /// Barra de busqueda de project progess
   Padding _searchBar() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 25),
       child: TextField(
         decoration: InputDecoration(
           hintText: 'Search ...',
         ),
       ),
-    );
-  }
-}
-
-/// Drop down especifico
-class DropDownXXX extends StatefulWidget {
-  @override
-  _DropDownXXXState createState() => _DropDownXXXState();
-}
-
-class _DropDownXXXState extends State<DropDownXXX> {
-  String dropdownValue = 'One';
-
-  @override
-  Widget build(BuildContext context) {
-    return DropdownButton<String>(
-      value: dropdownValue,
-      icon: Icon(Icons.arrow_downward),
-      iconSize: 24,
-      elevation: 16,
-      style: TextStyle(color: Colors.deepPurple),
-      underline: Container(
-        height: 2,
-        color: Colors.deepPurpleAccent,
-      ),
-      onChanged: (String newValue) {
-        setState(() {
-          dropdownValue = newValue;
-        });
-      },
-      items: <String>['One', 'Two', 'Free', 'Four']
-          .map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: Text(value),
-        );
-      }).toList(),
     );
   }
 }
