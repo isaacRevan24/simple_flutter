@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-///
+/// TileTask que devuelve la info de la tarea
 class TileTask extends StatelessWidget {
   final String userName = 'Severiano Atencio';
   final String date = '24/4/2020';
@@ -18,6 +18,7 @@ class TileTask extends StatelessWidget {
     );
   }
 
+  /// Barra inferior de tarea con nombre y fecha
   Container _bottomTaskDescription() {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 12),
@@ -31,6 +32,7 @@ class TileTask extends StatelessWidget {
     );
   }
 
+  /// taskContent contiene la información de la tarea
   Card _taskContent() {
     return Card(
       child: Container(
