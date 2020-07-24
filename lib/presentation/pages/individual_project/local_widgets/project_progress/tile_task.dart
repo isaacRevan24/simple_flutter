@@ -30,6 +30,7 @@ class TileTask extends StatelessWidget {
   /// taskContent contiene la información de la tarea
   Card _taskContent() {
     return Card(
+      color: Colors.white24,
       child: Column(
         children: <Widget>[
           /// Titulo de la tarea
@@ -70,7 +71,7 @@ class TileTask extends StatelessWidget {
     for (var tag in this.tags) {
       tagsWraps.add(
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 5),
           child: Chip(
             label: Text('# $tag'),
           ),
