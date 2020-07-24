@@ -13,6 +13,7 @@ class TileTask extends StatelessWidget {
     'front',
     'fdfd',
   ];
+  final bool tarkState = true;
 
   @override
   Widget build(BuildContext context) {
@@ -34,14 +35,20 @@ class TileTask extends StatelessWidget {
       child: Column(
         children: <Widget>[
           /// Titulo de la tarea
-          Center(
-            child: Text(
-              taskTitle,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Center(
+                child: Text(
+                  taskTitle,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ),
               ),
-            ),
+              _doneOrNotIcon()
+            ],
           ),
 
           /// Descripción de la tarea
@@ -63,6 +70,21 @@ class TileTask extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  /// Retorna el icono para tipo de avance done / no
+  Icon _doneOrNotIcon() {
+    if (this.tarkState) {
+      return Icon(
+        Icons.check_circle,
+        color: Colors.green,
+      );
+    } else {
+      return Icon(
+        Icons.pause_circle_outline,
+        color: Colors.red,
+      );
+    }
   }
 
   /// Toma la lista de tags y los convierte en items para el Wrap
