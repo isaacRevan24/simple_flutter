@@ -7,6 +7,7 @@ class ProjectProgress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.symmetric(horizontal: 20),
       color: Colors.white,
       child: Column(
         children: <Widget>[
@@ -34,7 +35,7 @@ class ProjectProgress extends StatelessWidget {
   /// Lista de botones drop down
   Padding _dropDownButtonsList() {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.symmetric(vertical: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
@@ -47,13 +48,10 @@ class ProjectProgress extends StatelessWidget {
   }
 
   /// Barra de busqueda de project progess
-  Padding _searchBar() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25),
-      child: TextField(
-        decoration: InputDecoration(
-          hintText: 'Search ...',
-        ),
+  TextField _searchBar() {
+    return TextField(
+      decoration: InputDecoration(
+        hintText: 'Search ...',
       ),
     );
   }
