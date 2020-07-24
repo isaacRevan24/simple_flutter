@@ -10,7 +10,7 @@ class ProjectProgress extends StatelessWidget {
         children: <Widget>[
           _searchBar(),
           _dropDownButtonsList(),
-          _taskListBuilder()
+          _taskListBuilder(),
         ],
       ),
     );
@@ -19,19 +19,15 @@ class ProjectProgress extends StatelessWidget {
   /// Lista de tareas
   Expanded _taskListBuilder() {
     return Expanded(
-      child: Container(
-        height: 140,
-        color: Colors.white,
-        child: ListView.builder(
-          physics: ClampingScrollPhysics(),
-          shrinkWrap: true,
-          scrollDirection: Axis.vertical,
-          itemCount: 4,
-          itemBuilder: (BuildContext context, int index) => Container(
-            height: 40,
-            child: Center(
-              child: Text("dddd"),
-            ),
+      child: ListView.builder(
+        physics: ClampingScrollPhysics(),
+        shrinkWrap: true,
+        scrollDirection: Axis.vertical,
+        itemCount: 2,
+        itemBuilder: (BuildContext context, int index) => Container(
+          height: 40,
+          child: Center(
+            child: Text("Place holder task"),
           ),
         ),
       ),
@@ -45,9 +41,9 @@ class ProjectProgress extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          DropDownXXX(),
-          DropDownXXX(),
-          DropDownXXX(),
+          DropDownAdvanceTypes(),
+          DropDownDate(),
+          DropDownSections()
         ],
       ),
     );

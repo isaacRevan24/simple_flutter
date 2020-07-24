@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import '../../../widgets/build_project_tile.dart';
 
 class ActiveProjects extends StatefulWidget {
-  const ActiveProjects({Key key}) : super(key: key);
-
   @override
   _ActiveProjectsState createState() => _ActiveProjectsState();
 }
