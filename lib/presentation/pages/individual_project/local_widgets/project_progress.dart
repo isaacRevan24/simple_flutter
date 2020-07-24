@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'project_progress/drop_down_buttons.dart';
+import 'project_progress/tile_task.dart';
 
 class ProjectProgress extends StatelessWidget {
   @override
@@ -24,12 +26,7 @@ class ProjectProgress extends StatelessWidget {
         shrinkWrap: true,
         scrollDirection: Axis.vertical,
         itemCount: 2,
-        itemBuilder: (BuildContext context, int index) => Container(
-          height: 40,
-          child: Center(
-            child: Text("Place holder task"),
-          ),
-        ),
+        itemBuilder: (BuildContext context, int index) => TileTask(),
       ),
     );
   }
