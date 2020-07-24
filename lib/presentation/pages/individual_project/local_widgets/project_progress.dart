@@ -8,7 +8,6 @@ class ProjectProgress extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20),
-      color: Colors.white,
       child: Column(
         children: <Widget>[
           _searchBar(),
@@ -26,7 +25,7 @@ class ProjectProgress extends StatelessWidget {
         physics: ClampingScrollPhysics(),
         shrinkWrap: true,
         scrollDirection: Axis.vertical,
-        itemCount: 2,
+        itemCount: 5,
         itemBuilder: (BuildContext context, int index) => TileTask(),
       ),
     );
@@ -41,7 +40,7 @@ class ProjectProgress extends StatelessWidget {
         children: <Widget>[
           DropDownAdvanceTypes(),
           DropDownDate(),
-          DropDownSections()
+          DropDownSections(),
         ],
       ),
     );

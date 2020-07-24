@@ -7,15 +7,12 @@ class ProjectInfoBackground extends StatelessWidget {
     return SafeArea(
       child: FractionallySizedBox(
         heightFactor: 0.4,
-        child: Container(
-          color: Colors.white,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              ProjectLogo(),
-              ProjectInfoPercentBar(),
-            ],
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            ProjectLogo(),
+            ProjectInfoPercentBar(),
+          ],
         ),
       ),
     );

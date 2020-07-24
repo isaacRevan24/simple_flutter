@@ -6,23 +6,20 @@ class ProjectStructureBackground extends StatelessWidget {
   Widget build(BuildContext context) {
     return FractionallySizedBox(
       heightFactor: 0.4,
-      child: Container(
-        color: Colors.white,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Center(
-              child: Container(
-                // padding: EdgeInsets.only(top: 10),
-                child: Text(
-                  'Avances',
-                  style: TextStyle(fontSize: 20),
-                ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Center(
+            child: Container(
+              // padding: EdgeInsets.only(top: 10),
+              child: Text(
+                'Avances',
+                style: TextStyle(fontSize: 20),
               ),
             ),
-            SectionsLabel(),
-          ],
-        ),
+          ),
+          SectionsLabel(),
+        ],
       ),
     );
   }
