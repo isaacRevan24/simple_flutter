@@ -1,4 +1,27 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+
+// Iconos para cada opción con su respectivo nombre
+const Icon informationIcon = Icon(
+  Icons.priority_high,
+  size: iconSize,
+);
+const Icon configurationIcon = Icon(
+  Icons.settings,
+  size: iconSize,
+);
+const Icon membersIcon = Icon(
+  Icons.group,
+  size: iconSize,
+);
+const Icon themesIcon = Icon(
+  Icons.color_lens,
+  size: iconSize,
+);
+
+// Icon size
+const double iconSize = 75;
 
 /// ManagerOptions retorna la lista de opciones que el manager tiene disponible
 class ManagerOptions extends StatelessWidget {
@@ -9,42 +32,54 @@ class ManagerOptions extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
+          // first row
           Flexible(
             flex: 1,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                _optionBuilder("Information"),
-                _optionBuilder("Configuration"),
+                _optionBuilder("Information", informationIcon),
+                _optionBuilder("Configuration", configurationIcon),
               ],
             ),
           ),
+          // second row
           Flexible(
             flex: 1,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                _optionBuilder("Members"),
-                _optionBuilder("Themes"),
+                _optionBuilder("Members", membersIcon),
+                _optionBuilder("Themes", themesIcon),
               ],
             ),
           ),
+          // boton de nueva tarea
           _newTask(),
         ],
       ),
     );
   }
 
-  /// optionBuilder recibe el titulo de la opción y una funcion para redirección
+  /// optionBuilder recibe el titulo de la opción, icono y una funcion para redirección
   /// al hacer onPress
-  Flexible _optionBuilder(String titleLabel) {
+  Flexible _optionBuilder(String titleLabel, Icon optionIcon) {
     return Flexible(
       flex: 1,
       child: Container(
         margin: EdgeInsets.all(20),
         child: Card(
-          child: Center(
-            child: Text(titleLabel),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              optionIcon,
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: Center(
+                  child: Text(titleLabel),
+                ),
+              ),
+            ],
           ),
         ),
       ),
@@ -56,11 +91,20 @@ class ManagerOptions extends StatelessWidget {
     return Flexible(
       flex: 1,
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 35),
+        height: 110,
         child: Card(
           color: Colors.red,
-          child: Center(
-            child: Text('nueva tarea'),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                'nueva tarea',
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+              Icon(Icons.add_circle),
+            ],
           ),
         ),
       ),
