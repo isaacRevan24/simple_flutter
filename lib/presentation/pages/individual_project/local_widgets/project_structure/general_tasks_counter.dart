@@ -31,21 +31,13 @@ class ProjectTasksCounters extends StatelessWidget {
 
   /// Retorna una fila con los 3 %
   Widget _percentageRow() {
-    return Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Container(
-            width: 25,
-          ),
-          _percentIndicator(0),
-          _percentIndicator(1),
-          _percentIndicator(2),
-          Container(
-            width: 25,
-          ),
-        ],
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        _percentIndicator(0),
+        _percentIndicator(1),
+        _percentIndicator(2),
+      ],
     );
   }
 

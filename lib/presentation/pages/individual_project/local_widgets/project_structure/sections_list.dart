@@ -25,7 +25,7 @@ class SectionsListBuilding extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      padding: const EdgeInsets.symmetric(vertical: 10),
       child: ConstrainedBox(
         constraints: BoxConstraints(maxHeight: 293, minHeight: 25),
         child: Container(

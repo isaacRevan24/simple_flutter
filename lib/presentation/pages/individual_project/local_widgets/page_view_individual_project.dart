@@ -18,7 +18,11 @@ class _IndividualProjectPageViewState extends State<IndividualProjectPageView> {
   Widget build(BuildContext context) {
     return PageView(
       controller: _controller,
-      children: <Widget>[ProjectStructure(), ProjectInfo(), ProjectProgress()],
+      children: <Widget>[
+        ProjectStructure(),
+        ProjectInfo(),
+        ProjectProgress(),
+      ],
     );
   }
 }

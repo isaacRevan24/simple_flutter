@@ -4,23 +4,20 @@ import 'package:percent_indicator/percent_indicator.dart';
 class ProjectStructureBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return FractionallySizedBox(
-      heightFactor: 0.4,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          Center(
-            child: Container(
-              // padding: EdgeInsets.only(top: 10),
-              child: Text(
-                'Avances',
-                style: TextStyle(fontSize: 20),
-              ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        Center(
+          child: Container(
+            // padding: EdgeInsets.only(top: 10),
+            child: Text(
+              'Avances',
+              style: TextStyle(fontSize: 20),
             ),
           ),
-          SectionsLabel(),
-        ],
-      ),
+        ),
+        SectionsLabel(),
+      ],
     );
   }
 }
