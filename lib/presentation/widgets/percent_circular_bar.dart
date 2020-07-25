@@ -19,3 +19,5 @@ class _GeneralProjectIndicatorState extends State<GeneralProjectIndicator> {
     );
   }
 }
+
+// TODO: Cambiarle el nombre a la clase

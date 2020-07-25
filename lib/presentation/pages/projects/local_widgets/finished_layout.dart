@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../widgets/build_project_tile.dart';
+import 'build_project_tile.dart';
 
 class FinishedProjects extends StatefulWidget {
   @override

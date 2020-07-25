@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-
-import 'percent_circular_bar.dart';
 import 'package:page_transition/page_transition.dart';
 
-import '../pages/individual_project/individual_project.dart';
+import '../../../widgets/percent_circular_bar.dart';
+import '../../individual_project/individual_project.dart';
+import '../../manager_mode/manager_mode.dart';
 
 class BuildProjectTile extends StatelessWidget {
   final int index;
@@ -20,6 +20,16 @@ class BuildProjectTile extends StatelessWidget {
       title: Text('Project number ${entries[index]}'),
       subtitle: Text('Last update -> 66/66/6666'),
       trailing: GeneralProjectIndicator(),
+      onLongPress: () {
+        Navigator.push(
+          context,
+          PageTransition(
+            duration: Duration(milliseconds: 200),
+            type: PageTransitionType.downToUp,
+            child: ManagerMode(),
+          ),
+        );
+      },
       onTap: () {
         Navigator.push(
           context,
