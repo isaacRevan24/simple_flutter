@@ -10,86 +10,74 @@ class ProjectTasksCounters extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        _percentIndicator(0),
-        _percentIndicator(1),
-        _percentIndicator(2),
+        _percentTotal(),
+        _percentDone(),
+        _percentNotDone(),
       ],
     );
   }
 
-  /// Dependiendo del inice devuelve (1 = total, 2 = realizadas y 3 = pendientes)
-  Row _percentIndicator(int index) {
-    switch (index) {
-      case 0:
-        return Row(
-          children: <Widget>[
-            Container(
-              child: Icon(Icons.clear_all),
+  /// percentTotal retorna
+  Row _percentTotal() {
+    return Row(
+      children: <Widget>[
+        Container(
+          child: Icon(Icons.clear_all),
+        ),
+        Text('Total: '),
+        Container(
+          color: Colors.blue,
+          child: Text(
+            '${tasksCounter[0]}',
+            style: TextStyle(
+              fontSize: 20,
             ),
-            Text('Total: '),
-            Container(
-              color: Colors.blue,
-              child: Text(
-                '${tasksCounter[0]}',
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Row _percentDone() {
+    return Row(
+      children: <Widget>[
+        Container(
+          child: Icon(
+            Icons.assignment_turned_in,
+          ),
+        ),
+        Text('Realizadas: '),
+        Container(
+          color: Colors.green,
+          child: Text(
+            '${tasksCounter[1]}',
+            style: TextStyle(
+              fontSize: 20,
             ),
-          ],
-        );
-        break;
-      case 1:
-        return Row(
-          children: <Widget>[
-            Container(
-              child: Icon(
-                Icons.assignment_turned_in,
-              ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Row _percentNotDone() {
+    return Row(
+      children: <Widget>[
+        Container(
+          child: Icon(Icons.pause_circle_outline),
+        ),
+        Text('Pendientes: '),
+        Container(
+          color: Colors.grey,
+          child: Text(
+            '${tasksCounter[2]}',
+            style: TextStyle(
+              fontSize: 20,
             ),
-            Text('Realizadas: '),
-            Container(
-              color: Colors.green,
-              child: Text(
-                '${tasksCounter[1]}',
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-            ),
-          ],
-        );
-        break;
-      case 2:
-        return Row(
-          children: <Widget>[
-            Container(
-              child: Icon(Icons.pause_circle_outline),
-            ),
-            Text('Pendientes: '),
-            Container(
-              color: Colors.grey,
-              child: Text(
-                '${tasksCounter[2]}',
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-            ),
-          ],
-        );
-        break;
-      default:
-        return Row(
-          children: <Widget>[
-            Container(
-              child: FlutterLogo(size: 30),
-            ),
-            Text('Sin tareas'),
-          ],
-        );
-        break;
-    }
+          ),
+        ),
+      ],
+    );
   }
 }
 
