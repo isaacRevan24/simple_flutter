@@ -17,7 +17,7 @@ class ProjectTasksCounters extends StatelessWidget {
     );
   }
 
-  /// percentTotal retorna
+  /// percentTotal muestra el total de todas las tareas
   Row _percentTotal() {
     return Row(
       children: <Widget>[
@@ -38,6 +38,7 @@ class ProjectTasksCounters extends StatelessWidget {
     );
   }
 
+  /// percentDone muestra las tareas realizadas
   Row _percentDone() {
     return Row(
       children: <Widget>[
@@ -60,6 +61,7 @@ class ProjectTasksCounters extends StatelessWidget {
     );
   }
 
+  /// percentNotDone muestra las tareas pendientes
   Row _percentNotDone() {
     return Row(
       children: <Widget>[
@@ -82,3 +84,4 @@ class ProjectTasksCounters extends StatelessWidget {
 }
 
 // TODO: ver como hacer el contenedor del numero redondo
+// TODO: hacer que sea un map en vez de una lista
