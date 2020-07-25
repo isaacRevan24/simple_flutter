@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
-class ProjectStructureBackground extends StatelessWidget {
+class ProjectStructureSectionsBars extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(

@@ -30,14 +30,16 @@ class SectionsListBuilding extends StatelessWidget {
         constraints: BoxConstraints(maxHeight: 293, minHeight: 25),
         child: Container(
           width: double.infinity,
-          child: ListView.builder(
-            physics: ClampingScrollPhysics(),
-            shrinkWrap: true,
-            scrollDirection: Axis.vertical,
-            itemCount: sectionsName.length,
-            itemBuilder: (BuildContext context, int index) => SectionCard(
-              sectionsName: sectionsName,
-              index: index,
+          child: Scrollbar(
+            child: ListView.builder(
+              physics: ClampingScrollPhysics(),
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              itemCount: sectionsName.length,
+              itemBuilder: (BuildContext context, int index) => SectionCard(
+                sectionsName: sectionsName,
+                index: index,
+              ),
             ),
           ),
         ),

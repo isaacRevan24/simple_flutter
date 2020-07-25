@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'project_structure/backgroud.dart';
+import 'project_structure/section_progress_bar.dart';
 import 'project_structure/sections_list.dart';
 import 'project_structure/general_tasks_counter.dart';
 import 'project_structure/header_scroll.dart';
@@ -27,7 +27,7 @@ class ProjectStructure extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: 20),
       child: ListView(
         children: <Widget>[
-          ProjectStructureBackground(),
+          ProjectStructureSectionsBars(),
           ProjecInfotHeader(),
           SectionList(
             sectionsName: sectionNames,
