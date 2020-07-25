@@ -103,6 +103,9 @@ class ManagerOptions extends StatelessWidget {
                   fontSize: 20,
                 ),
               ),
+              SizedBox(
+                width: 5,
+              ),
               Icon(Icons.add_circle),
             ],
           ),
