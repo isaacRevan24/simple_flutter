@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
 // Iconos para cada opción con su respectivo nombre
@@ -69,6 +67,7 @@ class ManagerOptions extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.all(20),
         child: Card(
+          elevation: 5,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -91,8 +90,10 @@ class ManagerOptions extends StatelessWidget {
     return Flexible(
       flex: 1,
       child: Container(
-        height: 110,
+        height: 115,
+        padding: EdgeInsets.only(bottom: 20),
         child: Card(
+          elevation: 5,
           color: Colors.red,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
