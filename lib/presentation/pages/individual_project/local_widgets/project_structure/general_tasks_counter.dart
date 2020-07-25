@@ -7,30 +7,6 @@ class ProjectTasksCounters extends StatelessWidget {
   ProjectTasksCounters({@required this.tasksCounter});
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        _title(),
-        _percentageRow(),
-      ],
-    );
-  }
-
-  /// Titulo de la sección
-  Container _title() {
-    return Container(
-      padding: EdgeInsets.only(top: 15, bottom: 20),
-      // color: Colors.red,
-      child: Text(
-        'Project tasks counter',
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-    );
-  }
-
-  /// Retorna una fila con los 3 %
-  Widget _percentageRow() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
