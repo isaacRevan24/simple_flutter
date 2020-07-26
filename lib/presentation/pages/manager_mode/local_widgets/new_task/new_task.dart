@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'new_task_form.dart';
+
 class NuevaTarea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -7,9 +9,7 @@ class NuevaTarea extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: _crearTarea(context),
-        body: Center(
-          child: Text('crear tarea'),
-        ),
+        body: NewTaskForm(),
       ),
     );
   }
