@@ -14,7 +14,7 @@ class BuildProjectTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+        contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
         leading: FlutterLogo(
           size: 70,
         ),

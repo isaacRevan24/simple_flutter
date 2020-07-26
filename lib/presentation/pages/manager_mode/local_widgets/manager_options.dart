@@ -98,7 +98,17 @@ class ManagerOptions extends StatelessWidget {
       flex: 1,
       child: Container(
         margin: EdgeInsets.all(20),
-        child: InkWell(
+        child: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              PageTransition(
+                duration: Duration(milliseconds: 200),
+                type: PageTransitionType.rightToLeft,
+                child: pageOption,
+              ),
+            );
+          },
           child: Card(
             elevation: 5,
             child: Column(
@@ -114,16 +124,6 @@ class ManagerOptions extends StatelessWidget {
               ],
             ),
           ),
-          onTap: () {
-            Navigator.push(
-              context,
-              PageTransition(
-                duration: Duration(milliseconds: 200),
-                type: PageTransitionType.rightToLeft,
-                child: pageOption,
-              ),
-            );
-          },
         ),
       ),
     );
@@ -136,7 +136,17 @@ class ManagerOptions extends StatelessWidget {
       child: Container(
         height: 115,
         padding: EdgeInsets.only(bottom: 20),
-        child: InkWell(
+        child: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              PageTransition(
+                duration: Duration(milliseconds: 200),
+                type: PageTransitionType.rightToLeft,
+                child: NuevaTarea(),
+              ),
+            );
+          },
           child: Card(
             elevation: 5,
             color: Colors.red,
@@ -156,16 +166,6 @@ class ManagerOptions extends StatelessWidget {
               ],
             ),
           ),
-          onTap: () {
-            Navigator.push(
-              context,
-              PageTransition(
-                duration: Duration(milliseconds: 200),
-                type: PageTransitionType.rightToLeft,
-                child: NuevaTarea(),
-              ),
-            );
-          },
         ),
       ),
     );
