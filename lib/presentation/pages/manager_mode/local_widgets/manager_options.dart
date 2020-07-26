@@ -4,6 +4,7 @@ import 'theme_option/theme_option.dart';
 import 'configuration_option/configuration_option.dart';
 import 'information_option/information_option.dart';
 import 'members_option/members_option.dart';
+import 'new_task/new_task.dart';
 
 // Iconos para cada opción con su respectivo nombre
 const Icon informationIcon = Icon(
@@ -78,7 +79,7 @@ class ManagerOptions extends StatelessWidget {
             ),
           ),
           // boton de nueva tarea
-          _newTask(),
+          _newTask(context),
         ],
       ),
     );
@@ -129,30 +130,42 @@ class ManagerOptions extends StatelessWidget {
   }
 
   /// Boton para crear nueva tarea
-  Flexible _newTask() {
+  Flexible _newTask(BuildContext context) {
     return Flexible(
       flex: 1,
       child: Container(
         height: 115,
         padding: EdgeInsets.only(bottom: 20),
-        child: Card(
-          elevation: 5,
-          color: Colors.red,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'nueva tarea',
-                style: TextStyle(
-                  fontSize: 20,
+        child: InkWell(
+          child: Card(
+            elevation: 5,
+            color: Colors.red,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  'nueva tarea',
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
                 ),
-              ),
-              SizedBox(
-                width: 5,
-              ),
-              Icon(Icons.add_circle),
-            ],
+                SizedBox(
+                  width: 5,
+                ),
+                Icon(Icons.add_circle),
+              ],
+            ),
           ),
+          onTap: () {
+            Navigator.push(
+              context,
+              PageTransition(
+                duration: Duration(milliseconds: 200),
+                type: PageTransitionType.rightToLeft,
+                child: NuevaTarea(),
+              ),
+            );
+          },
         ),
       ),
     );
