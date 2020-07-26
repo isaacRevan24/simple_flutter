@@ -8,14 +8,14 @@ class ManagerMode extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        appBar: _managerModeAppBar(context),
+        appBar: managerModeAppBar(context),
         body: ManagerOptions(),
       ),
     );
   }
 
   /// App bar de manager mode
-  AppBar _managerModeAppBar(BuildContext context) {
+  AppBar managerModeAppBar(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.white,
       elevation: 0,
