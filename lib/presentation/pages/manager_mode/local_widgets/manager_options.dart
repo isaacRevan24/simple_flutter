@@ -97,7 +97,7 @@ class ManagerOptions extends StatelessWidget {
       flex: 1,
       child: Container(
         margin: EdgeInsets.all(20),
-        child: GestureDetector(
+        child: InkWell(
           child: Card(
             elevation: 5,
             child: Column(
