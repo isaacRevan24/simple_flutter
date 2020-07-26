@@ -9,7 +9,9 @@ class ThemeOptions extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: optionsAppBar(context, "Themes Options"),
-        body: Text('Themes options pages'),
+        body: Center(
+          child: Text('Themes options pages'),
+        ),
       ),
     );
   }

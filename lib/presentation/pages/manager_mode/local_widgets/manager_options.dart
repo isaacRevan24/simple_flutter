@@ -84,8 +84,9 @@ class ManagerOptions extends StatelessWidget {
     );
   }
 
-  /// optionBuilder recibe el titulo de la opción, icono y una funcion para redirección
-  /// al hacer onPress
+  /// Unción que retorna el boton de opción para el manager option, recive el contexto,
+  /// el titulo de la opción, el icono de la opción y la función de la página de la opción
+  /// para redirigir.
   Flexible _optionBuilder(
     BuildContext context,
     String titleLabel,
@@ -117,7 +118,7 @@ class ManagerOptions extends StatelessWidget {
               context,
               PageTransition(
                 duration: Duration(milliseconds: 200),
-                type: PageTransitionType.fade,
+                type: PageTransitionType.rightToLeft,
                 child: pageOption,
               ),
             );

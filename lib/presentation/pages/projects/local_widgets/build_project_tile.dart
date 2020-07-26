@@ -25,7 +25,7 @@ class BuildProjectTile extends StatelessWidget {
           context,
           PageTransition(
             duration: Duration(milliseconds: 200),
-            type: PageTransitionType.downToUp,
+            type: PageTransitionType.rightToLeft,
             child: ManagerMode(),
           ),
         );
@@ -35,7 +35,7 @@ class BuildProjectTile extends StatelessWidget {
           context,
           PageTransition(
             duration: Duration(milliseconds: 200),
-            type: PageTransitionType.upToDown,
+            type: PageTransitionType.rightToLeft,
             child: IndividualProject(),
           ),
         );
