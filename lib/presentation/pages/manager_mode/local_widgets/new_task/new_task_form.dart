@@ -19,12 +19,14 @@ class _NewTaskFormState extends State<NewTaskForm> {
       key: _formKey,
       child: Column(
         children: <Widget>[
+          // Campo donde se agrega el titulo de la tarea
           TextFormField(
             decoration: InputDecoration(labelText: 'Title'),
             validator: (input) => input.isEmpty ? 'Enter some text' : null,
             onSaved: (input) => _taskTitle = input,
             maxLength: 55,
           ),
+          // Campo de la descripción de la tarea
           TextFormField(
             decoration: InputDecoration(labelText: 'Description'),
             validator: (input) => input.isEmpty ? 'Enter some text' : null,
@@ -32,6 +34,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
             maxLength: 180,
             maxLines: 3,
           ),
+          // Campo del pull request con un checkbox
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -49,6 +52,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
               ),
             ],
           ),
+          // Boton que despliega la lista de miembros para asignar
           FlatButton(
             onPressed: () {
               _selectMember();
@@ -62,6 +66,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
             ),
             label: Text('Aaron Burr'),
           ),
+          // Boton de sumbit del formulario
           RaisedButton(
             onPressed: _submit,
             child: Text('Submit'),
@@ -81,6 +86,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
           .showSnackBar(SnackBar(content: Text('Processing Data')));
 
       print(_taskTitle);
+      print(_inCharge);
       print(_inCharge.length);
       print(_description);
       print(_pullRequest);
@@ -107,7 +113,8 @@ class _NewTaskFormState extends State<NewTaskForm> {
       options.add(
         SimpleDialogOption(
           onPressed: () {
-            print('opción 1');
+            this._inCharge.add(_members[i]);
+            // print('${_members[i]}');
             Navigator.pop(context);
           },
           child: Text('${_members[i]}'),
