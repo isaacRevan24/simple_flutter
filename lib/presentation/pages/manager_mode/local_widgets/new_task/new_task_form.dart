@@ -12,6 +12,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
   String _taskTitle, _description;
   bool _pullRequest = false;
   List<String> _inCharge = [];
+  List<Chip> _inChargeChip = [];
 
   @override
   Widget build(BuildContext context) {
@@ -59,12 +60,12 @@ class _NewTaskFormState extends State<NewTaskForm> {
             },
             child: Text('Seleccionar encargado'),
           ),
-          Chip(
-            avatar: CircleAvatar(
-              backgroundColor: Colors.grey.shade800,
-              child: Text('AB'),
+          // Lista de miembros a cargo de la tarea
+          ConstrainedBox(
+            constraints: BoxConstraints(maxHeight: 200),
+            child: Wrap(
+              children: _inChargeChip,
             ),
-            label: Text('Aaron Burr'),
           ),
           // Boton de sumbit del formulario
           RaisedButton(
@@ -93,6 +94,18 @@ class _NewTaskFormState extends State<NewTaskForm> {
     }
   }
 
+  void _addChipMember() {
+    setState(() {
+      _inChargeChip.add(Chip(
+        avatar: CircleAvatar(
+          backgroundColor: Colors.grey.shade800,
+          child: Text('AB'),
+        ),
+        label: Text('Aaron Burr'),
+      ));
+    });
+  }
+
   /// Retorna la lista de miembros para seleccionar para estar en cargo
   Future<void> _selectMember() async {
     await showDialog(
@@ -113,7 +126,10 @@ class _NewTaskFormState extends State<NewTaskForm> {
       options.add(
         SimpleDialogOption(
           onPressed: () {
-            this._inCharge.add(_members[i]);
+            setState(() {
+              _inCharge.add(_members[i]);
+              _addChipMember();
+            });
             // print('${_members[i]}');
             Navigator.pop(context);
           },
@@ -124,3 +140,5 @@ class _NewTaskFormState extends State<NewTaskForm> {
     return options;
   }
 }
+
+// TODO: Hacer que cuando se agrega selecciona una opción de memberDialogOption no se pueda seleccionar nuevamente
