@@ -149,6 +149,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
           onPressed: () {
             setState(() {
               _inCharge.add(_members[i]);
+              _members.remove(_members[i]);
             });
             Navigator.pop(context);
           },
@@ -180,6 +181,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
           deleteIconColor: Colors.red,
           onDeleted: () {
             setState(() {
+              _members.add(_inCharge[index]);
               _inCharge.remove(_inCharge[index]);
             });
           },
@@ -210,6 +212,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
           onPressed: () {
             setState(() {
               _selectedTags.add(_tags[i]);
+              _tags.remove(_tags[i]);
             });
             Navigator.pop(context);
           },
@@ -241,6 +244,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
           deleteIconColor: Colors.red,
           onDeleted: () {
             setState(() {
+              _tags.add(_selectedTags[index]);
               _selectedTags.remove(_selectedTags[index]);
             });
           },
