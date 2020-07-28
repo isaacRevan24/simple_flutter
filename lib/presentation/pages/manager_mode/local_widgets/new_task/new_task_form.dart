@@ -126,19 +126,24 @@ class _NewTaskFormState extends State<NewTaskForm> {
   /// Metodo para procesar la data de los formularios, valida los campos obligatorios + imprime los valores en la
   /// consola
   void _submit() {
-    if (_formKey.currentState.validate() && _inCharge.length > 0) {
-      // guarda el estado de los TextForms a sus variables.
-      _formKey.currentState.save();
-      // Muestra una snackBar con feedback
-      Scaffold.of(context)
-          .showSnackBar(SnackBar(content: Text('Processing Data')));
+    if (_formKey.currentState.validate()) {
+      if (_inCharge.length > 0) {
+        // guarda el estado de los TextForms a sus variables.
+        _formKey.currentState.save();
+        // Muestra una snackBar con feedback
+        Scaffold.of(context)
+            .showSnackBar(SnackBar(content: Text('Processing Data')));
 
-      print(_taskTitle);
-      print(_inCharge);
-      print(_inCharge.length);
-      print(_description);
-      print(_selectedTags);
-      print(_pullRequest);
+        print(_taskTitle);
+        print(_inCharge);
+        print(_inCharge.length);
+        print(_description);
+        print(_selectedTags);
+        print(_pullRequest);
+      } else {
+        Scaffold.of(context)
+            .showSnackBar(SnackBar(content: Text('Have to add a member')));
+      }
     }
   }
 
@@ -277,3 +282,4 @@ class _NewTaskFormState extends State<NewTaskForm> {
 }
 
 // TODO: Hacer que cuando se agrega selecciona una opción de memberDialogOption no se pueda seleccionar nuevamente
+// TODO: Crear un indicador para que el usuario sepa que la tarea fue creada

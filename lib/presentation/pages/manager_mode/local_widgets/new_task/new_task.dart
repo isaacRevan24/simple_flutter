@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'new_task_form.dart';
 
+/// Página para crear nuava tarea
 class NuevaTarea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class NuevaTarea extends StatelessWidget {
     );
   }
 
-  /// App bar de manager mode
+  /// App bar del formulario de nueva tarea
   AppBar _crearTarea(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.white,
@@ -32,3 +33,5 @@ class NuevaTarea extends StatelessWidget {
     );
   }
 }
+
+// TODO: Hacer que si se toca la x cuando los campos del formulario han cambiado, le salga un alert preguntando si desea descartar la tarea o continuar escribiendo

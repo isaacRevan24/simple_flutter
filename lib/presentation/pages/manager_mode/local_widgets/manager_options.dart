@@ -11,8 +11,8 @@ const Icon informationIcon = Icon(
   Icons.priority_high,
   size: iconSize,
 );
-const Icon configurationIcon = Icon(
-  Icons.settings,
+const Icon taskIcon = Icon(
+  Icons.note,
   size: iconSize,
 );
 const Icon membersIcon = Icon(
@@ -42,17 +42,20 @@ class ManagerOptions extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
+                /// Boton que dirige a la página para configurar la información del proyecto.
                 _optionBuilder(
                   context,
                   "Information",
                   informationIcon,
                   InformationOptions(),
                 ),
+
+                /// Boton que dirige a la página para configurar el tema del proyecto.
                 _optionBuilder(
                   context,
-                  "Configuration",
-                  configurationIcon,
-                  ConfigurationOptions(),
+                  "Themes",
+                  themesIcon,
+                  ThemeOptions(),
                 ),
               ],
             ),
@@ -63,31 +66,34 @@ class ManagerOptions extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
+                /// Boton que dirige a la página par manejar a los miembros del proyecto.
                 _optionBuilder(
                   context,
                   "Members",
                   membersIcon,
                   MembersOptions(),
                 ),
+
+                /// Boton que dirige a la página para configurar tareas.
                 _optionBuilder(
                   context,
-                  "Themes",
-                  themesIcon,
-                  ThemeOptions(),
+                  "Tareas",
+                  taskIcon,
+                  ConfigurationOptions(),
                 ),
               ],
             ),
           ),
           // boton de nueva tarea
-          _newTask(context),
+          _newTaskButton(context),
         ],
       ),
     );
   }
 
-  /// Unción que retorna el boton de opción para el manager option, recive el contexto,
+  /// Funcion que retorna el boton de opción para el manager, recive el contexto,
   /// el titulo de la opción, el icono de la opción y la función de la página de la opción
-  /// para redirigir.
+  /// para redirigir al ser tocada.
   Flexible _optionBuilder(
     BuildContext context,
     String titleLabel,
@@ -130,7 +136,7 @@ class ManagerOptions extends StatelessWidget {
   }
 
   /// Boton para crear nueva tarea
-  Flexible _newTask(BuildContext context) {
+  Flexible _newTaskButton(BuildContext context) {
     return Flexible(
       flex: 1,
       child: Container(
@@ -154,7 +160,7 @@ class ManagerOptions extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  'nueva tarea',
+                  'Nueva Tarea',
                   style: TextStyle(
                     fontSize: 20,
                   ),
