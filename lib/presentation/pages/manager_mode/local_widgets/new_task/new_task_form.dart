@@ -68,27 +68,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
                 scrollDirection: Axis.horizontal,
                 itemCount: _inCharge.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    margin: EdgeInsets.only(right: 5),
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(minWidth: 60),
-                      child: Chip(
-                        avatar: CircleAvatar(
-                          backgroundColor: Colors.grey.shade800,
-                          // child: Text('AB'),
-                        ),
-                        label: Text(
-                          _inCharge[index],
-                          style: TextStyle(fontSize: 12),
-                        ),
-                        deleteIcon: Icon(
-                          Icons.cancel,
-                        ),
-                        deleteIconColor: Colors.red,
-                        onDeleted: () {},
-                      ),
-                    ),
-                  );
+                  return _inChargeMemberChip(index);
                 },
               ),
             ),
@@ -98,6 +78,35 @@ class _NewTaskFormState extends State<NewTaskForm> {
               child: Text('Submit'),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  /// Retorna la lista de chips de miembros escogidos para la tarea
+  Container _inChargeMemberChip(int index) {
+    return Container(
+      margin: EdgeInsets.only(right: 5),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(minWidth: 60),
+        child: Chip(
+          avatar: CircleAvatar(
+            backgroundColor: Colors.grey.shade800,
+            // child: Text('AB'),
+          ),
+          label: Text(
+            _inCharge[index],
+            style: TextStyle(fontSize: 12),
+          ),
+          deleteIcon: Icon(
+            Icons.cancel,
+          ),
+          deleteIconColor: Colors.red,
+          onDeleted: () {
+            setState(() {
+              _inCharge.remove(_inCharge[index]);
+            });
+          },
         ),
       ),
     );
@@ -143,7 +152,6 @@ class _NewTaskFormState extends State<NewTaskForm> {
             setState(() {
               _inCharge.add(_members[i]);
             });
-            // print('${_members[i]}');
             Navigator.pop(context);
           },
           child: Text(_members[i]),
