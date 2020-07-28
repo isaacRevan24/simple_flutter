@@ -7,12 +7,21 @@ class NewTaskForm extends StatefulWidget {
 }
 
 class _NewTaskFormState extends State<NewTaskForm> {
+  // Variable necesaria para validar el formulario.
   final _formKey = GlobalKey<FormState>();
+  // Lista de miembros del proyecto que se les puede asignar a la tarea.
   List<String> _members = ['Isaac Atencio', 'Arlette Perez', 'Mabelis Hidalgo'];
+  // Lista de tags creados por el manager para asignar.
   List<String> _tags = ['bd', 'frontend', 'backend'];
-  String _taskTitle, _description;
+  // Titulo de la tarea.
+  String _taskTitle;
+  // Descripción de la tarea.
+  String _description;
+  // Si es true la tarea debe ser pasado por procesos de validación y si no pasa directamente a los avances de proyecto.
   bool _pullRequest = false;
+  // Lista de miembros encargados de realizar la tarea presente.
   List<String> _inCharge = [];
+  // Lista de tags seleccionados para la tarea.
   List<String> _selectedTags = [];
 
   @override
@@ -22,15 +31,17 @@ class _NewTaskFormState extends State<NewTaskForm> {
       child: Form(
         key: _formKey,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            // Campo donde se agrega el titulo de la tarea
+            /// Campo donde se agrega el titulo de la tarea
             TextFormField(
               decoration: InputDecoration(labelText: 'Title'),
               validator: (input) => input.isEmpty ? 'Enter some text' : null,
               onSaved: (input) => _taskTitle = input,
               maxLength: 55,
             ),
-            // Campo de la descripción de la tarea
+
+            /// Campo de la descripción de la tarea
             TextFormField(
               decoration: InputDecoration(labelText: 'Description'),
               validator: (input) => input.isEmpty ? 'Enter some text' : null,
@@ -38,7 +49,8 @@ class _NewTaskFormState extends State<NewTaskForm> {
               maxLength: 180,
               maxLines: 3,
             ),
-            // Campo del pull request con un checkbox
+
+            /// Campo del pull request con un checkbox en el que activo = true y apagado = false
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -57,7 +69,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
               ],
             ),
 
-            /// Boton que te muestra un dialogBox con los nombres de los miebros disponibles
+            /// Boton que te muestra un dialogBox con los nombres de los miebros para escoger
             FlatButton(
               color: Colors.grey,
               onPressed: () {
@@ -66,7 +78,8 @@ class _NewTaskFormState extends State<NewTaskForm> {
               child: Text('Seleccionar encargado'),
             ),
 
-            /// Lista de miembros a cargo de la tarea que se puede scrolear horizontalmente si se pasa del tamaño
+            /// Lista de chips de miembros a cargo de la tarea que se puede scrolear horizontalmente si se
+            /// pasa del tamaño
             ConstrainedBox(
               constraints: BoxConstraints(maxHeight: 40),
               child: ListView.builder(
@@ -78,7 +91,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
               ),
             ),
 
-            /// Boton que te muestra un dialogBox con los nombres de los miebros disponibles
+            /// Boton que muestra las opciones de tags disponibles.
             FlatButton(
               color: Colors.grey,
               onPressed: () {
@@ -87,7 +100,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
               child: Text('Seleccionar tag'),
             ),
 
-            /// Lista de miembros a cargo de la tarea que se puede scrolear horizontalmente si se pasa del tamaño
+            /// Lista de chips de tags seleccionados para la tarea.
             ConstrainedBox(
               constraints: BoxConstraints(maxHeight: 40),
               child: ListView.builder(
@@ -99,7 +112,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
               ),
             ),
 
-            // Boton de sumbit del formulario
+            /// Boton que llama el metodo para validar el formulario y procesarlo.
             RaisedButton(
               onPressed: _submit,
               child: Text('Submit'),
@@ -110,12 +123,13 @@ class _NewTaskFormState extends State<NewTaskForm> {
     );
   }
 
-  /// Metodo para procesar la data de los formularios, valida los campos obligatorios
+  /// Metodo para procesar la data de los formularios, valida los campos obligatorios + imprime los valores en la
+  /// consola
   void _submit() {
     if (_formKey.currentState.validate() && _inCharge.length > 0) {
-      // Metodo que guarda la data de los formularios en las variables
+      // guarda el estado de los TextForms a sus variables.
       _formKey.currentState.save();
-      // Snack bar de feedback
+      // Muestra una snackBar con feedback
       Scaffold.of(context)
           .showSnackBar(SnackBar(content: Text('Processing Data')));
 
@@ -123,11 +137,12 @@ class _NewTaskFormState extends State<NewTaskForm> {
       print(_inCharge);
       print(_inCharge.length);
       print(_description);
+      print(_selectedTags);
       print(_pullRequest);
     }
   }
 
-  /// Retorna la lista de miembros para seleccionar para estar en cargo en un SimpleDialog
+  /// Metodo para crear el dialog box
   Future<void> _selectMember() async {
     await showDialog(
       context: context,
@@ -140,7 +155,8 @@ class _NewTaskFormState extends State<NewTaskForm> {
     );
   }
 
-  /// Crea la lista que _selectMember usa para mostrar en el dialog box
+  /// Crea una lista de miembros disponibles para seleccionar y al elegir uno se elimina de la lista _members y se
+  /// agrega a la lista _inCharge para mostrar como chips
   List<Widget> _membersDialogOptions(BuildContext context) {
     List<Widget> options = [];
     for (var i = 0; i <= this._members.length - 1; i++) {
@@ -160,7 +176,9 @@ class _NewTaskFormState extends State<NewTaskForm> {
     return options;
   }
 
-  /// Retorna la lista de chips de miembros escogidos para la tarea
+  /// Crea una lista de chips que se muestran con el o los miembros seleccionados para la tarea. El chip tiene una x
+  /// para eliminar el miembro y cuando se toca remueve el chip de la pantalla y remueve el miembro de _inCharge y lo
+  /// vuelve a ingresar a _members para que se muestre como opción a escoger.
   Container _inChargeMemberChip(int index) {
     return Container(
       margin: EdgeInsets.only(right: 5),
@@ -179,6 +197,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
             Icons.cancel,
           ),
           deleteIconColor: Colors.red,
+          // Al tocar el icono rojo se elimina el chip.
           onDeleted: () {
             setState(() {
               _members.add(_inCharge[index]);
@@ -190,7 +209,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
     );
   }
 
-  /// Retorna la lista de miembros para seleccionar para estar en cargo en un SimpleDialog
+  /// Crea el DialoBox para seleccionar tags
   Future<void> _selectTag() async {
     await showDialog(
       context: context,
@@ -203,7 +222,8 @@ class _NewTaskFormState extends State<NewTaskForm> {
     );
   }
 
-  /// Crea la lista que _selectMember usa para mostrar en el dialog box
+  /// Crea la lista de tags disponibles de la variable _tags y al seleccionarse se agregan a _selectedTags y se remueven
+  /// de esa lista
   List<Widget> _tagsDialogOptions(BuildContext context) {
     List<Widget> options = [];
     for (var i = 0; i <= this._tags.length - 1; i++) {
@@ -223,7 +243,8 @@ class _NewTaskFormState extends State<NewTaskForm> {
     return options;
   }
 
-  /// Retorna la lista de chips de miembros escogidos para la tarea
+  /// Crea una lista de chips con el nombre de los tags con una x para eliminarlos, si se toca la x se elimina el chip
+  /// removiendo el tag de la variable _selectedTags y re-agregarlos a _tags para que se muestre como opción.
   Container _tagChips(int index) {
     return Container(
       margin: EdgeInsets.only(right: 5),
@@ -235,13 +256,14 @@ class _NewTaskFormState extends State<NewTaskForm> {
             // child: Text('AB'),
           ),
           label: Text(
-            _selectedTags[index],
+            '# ${_selectedTags[index]}',
             style: TextStyle(fontSize: 12),
           ),
           deleteIcon: Icon(
             Icons.cancel,
           ),
           deleteIconColor: Colors.red,
+          // Al tocar el icono rojo se elimina el chip.
           onDeleted: () {
             setState(() {
               _tags.add(_selectedTags[index]);
