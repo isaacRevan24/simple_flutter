@@ -12,7 +12,6 @@ class _NewTaskFormState extends State<NewTaskForm> {
   String _taskTitle, _description;
   bool _pullRequest = false;
   List<String> _inCharge = [];
-  List<Widget> _inChargeChip = [];
 
   @override
   Widget build(BuildContext context) {
@@ -67,9 +66,30 @@ class _NewTaskFormState extends State<NewTaskForm> {
               constraints: BoxConstraints(maxHeight: 40),
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: _inChargeChip.length,
-                itemBuilder: (BuildContext context, int index) =>
-                    _inChargeChip[index],
+                itemCount: _inCharge.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    margin: EdgeInsets.only(right: 5),
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(minWidth: 60),
+                      child: Chip(
+                        avatar: CircleAvatar(
+                          backgroundColor: Colors.grey.shade800,
+                          // child: Text('AB'),
+                        ),
+                        label: Text(
+                          _inCharge[index],
+                          style: TextStyle(fontSize: 12),
+                        ),
+                        deleteIcon: Icon(
+                          Icons.cancel,
+                        ),
+                        deleteIconColor: Colors.red,
+                        onDeleted: () {},
+                      ),
+                    ),
+                  );
+                },
               ),
             ),
             // Boton de sumbit del formulario
@@ -100,28 +120,6 @@ class _NewTaskFormState extends State<NewTaskForm> {
     }
   }
 
-  /// agrega un chip a la lista de miembros seleccionados y los muestra
-  void _addChipMember(String nombre) {
-    setState(() {
-      _inChargeChip.add(Container(
-        margin: EdgeInsets.only(right: 5),
-        child: ConstrainedBox(
-          constraints: BoxConstraints(minWidth: 60),
-          child: Chip(
-            avatar: CircleAvatar(
-              backgroundColor: Colors.grey.shade800,
-              // child: Text('AB'),
-            ),
-            label: Text(
-              nombre,
-              style: TextStyle(fontSize: 12),
-            ),
-          ),
-        ),
-      ));
-    });
-  }
-
   /// Retorna la lista de miembros para seleccionar para estar en cargo
   Future<void> _selectMember() async {
     await showDialog(
@@ -144,7 +142,6 @@ class _NewTaskFormState extends State<NewTaskForm> {
           onPressed: () {
             setState(() {
               _inCharge.add(_members[i]);
-              _addChipMember(_members[i]);
             });
             // print('${_members[i]}');
             Navigator.pop(context);
