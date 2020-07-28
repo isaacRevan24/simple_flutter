@@ -8,71 +8,77 @@ class NewTaskForm extends StatefulWidget {
 
 class _NewTaskFormState extends State<NewTaskForm> {
   final _formKey = GlobalKey<FormState>();
-  List<String> _members = ['Isaac', 'Arlette', 'Mabelis'];
+  List<String> _members = ['Isaac Atencio', 'Arlette Perez', 'Mabelis Hidalgo'];
   String _taskTitle, _description;
   bool _pullRequest = false;
   List<String> _inCharge = [];
-  List<Chip> _inChargeChip = [];
+  List<Widget> _inChargeChip = [];
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        children: <Widget>[
-          // Campo donde se agrega el titulo de la tarea
-          TextFormField(
-            decoration: InputDecoration(labelText: 'Title'),
-            validator: (input) => input.isEmpty ? 'Enter some text' : null,
-            onSaved: (input) => _taskTitle = input,
-            maxLength: 55,
-          ),
-          // Campo de la descripción de la tarea
-          TextFormField(
-            decoration: InputDecoration(labelText: 'Description'),
-            validator: (input) => input.isEmpty ? 'Enter some text' : null,
-            onSaved: (input) => _description = input,
-            maxLength: 180,
-            maxLines: 3,
-          ),
-          // Campo del pull request con un checkbox
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text('Pull request'),
-              SizedBox(
-                width: 20,
-              ),
-              Checkbox(
-                value: _pullRequest,
-                onChanged: (bool newValue) {
-                  setState(() {
-                    _pullRequest = newValue;
-                  });
-                },
-              ),
-            ],
-          ),
-          // Boton que despliega la lista de miembros para asignar
-          FlatButton(
-            onPressed: () {
-              _selectMember();
-            },
-            child: Text('Seleccionar encargado'),
-          ),
-          // Lista de miembros a cargo de la tarea
-          ConstrainedBox(
-            constraints: BoxConstraints(maxHeight: 200),
-            child: Wrap(
-              children: _inChargeChip,
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 20),
+      child: Form(
+        key: _formKey,
+        child: Column(
+          children: <Widget>[
+            // Campo donde se agrega el titulo de la tarea
+            TextFormField(
+              decoration: InputDecoration(labelText: 'Title'),
+              validator: (input) => input.isEmpty ? 'Enter some text' : null,
+              onSaved: (input) => _taskTitle = input,
+              maxLength: 55,
             ),
-          ),
-          // Boton de sumbit del formulario
-          RaisedButton(
-            onPressed: _submit,
-            child: Text('Submit'),
-          ),
-        ],
+            // Campo de la descripción de la tarea
+            TextFormField(
+              decoration: InputDecoration(labelText: 'Description'),
+              validator: (input) => input.isEmpty ? 'Enter some text' : null,
+              onSaved: (input) => _description = input,
+              maxLength: 180,
+              maxLines: 3,
+            ),
+            // Campo del pull request con un checkbox
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text('Pull request'),
+                SizedBox(
+                  width: 20,
+                ),
+                Checkbox(
+                  value: _pullRequest,
+                  onChanged: (bool newValue) {
+                    setState(() {
+                      _pullRequest = newValue;
+                    });
+                  },
+                ),
+              ],
+            ),
+            // Boton que despliega la lista de miembros para asignar
+            FlatButton(
+              onPressed: () {
+                _selectMember();
+              },
+              child: Text('Seleccionar encargado'),
+            ),
+            // Lista de miembros a cargo de la tarea
+            ConstrainedBox(
+              constraints: BoxConstraints(maxHeight: 40),
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: _inChargeChip.length,
+                itemBuilder: (BuildContext context, int index) =>
+                    _inChargeChip[index],
+              ),
+            ),
+            // Boton de sumbit del formulario
+            RaisedButton(
+              onPressed: _submit,
+              child: Text('Submit'),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -94,14 +100,24 @@ class _NewTaskFormState extends State<NewTaskForm> {
     }
   }
 
-  void _addChipMember() {
+  /// agrega un chip a la lista de miembros seleccionados y los muestra
+  void _addChipMember(String nombre) {
     setState(() {
-      _inChargeChip.add(Chip(
-        avatar: CircleAvatar(
-          backgroundColor: Colors.grey.shade800,
-          child: Text('AB'),
+      _inChargeChip.add(Container(
+        margin: EdgeInsets.only(right: 5),
+        child: ConstrainedBox(
+          constraints: BoxConstraints(minWidth: 60),
+          child: Chip(
+            avatar: CircleAvatar(
+              backgroundColor: Colors.grey.shade800,
+              // child: Text('AB'),
+            ),
+            label: Text(
+              nombre,
+              style: TextStyle(fontSize: 12),
+            ),
+          ),
         ),
-        label: Text('Aaron Burr'),
       ));
     });
   }
@@ -128,12 +144,12 @@ class _NewTaskFormState extends State<NewTaskForm> {
           onPressed: () {
             setState(() {
               _inCharge.add(_members[i]);
-              _addChipMember();
+              _addChipMember(_members[i]);
             });
             // print('${_members[i]}');
             Navigator.pop(context);
           },
-          child: Text('${_members[i]}'),
+          child: Text(_members[i]),
         ),
       );
     }
