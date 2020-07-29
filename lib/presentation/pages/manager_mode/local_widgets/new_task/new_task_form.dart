@@ -13,6 +13,8 @@ class _NewTaskFormState extends State<NewTaskForm> {
   List<String> _members = ['Isaac Atencio', 'Arlette Perez', 'Mabelis Hidalgo'];
   // Lista de tags creados por el manager para asignar.
   List<String> _tags = ['bd', 'frontend', 'backend'];
+  // Lista de tags creados por el manager para asignar.
+  List<String> _sections = ['bd', 'frontend', 'backend'];
   // Titulo de la tarea.
   String _taskTitle;
   // Descripción de la tarea.
@@ -23,6 +25,8 @@ class _NewTaskFormState extends State<NewTaskForm> {
   List<String> _inCharge = [];
   // Lista de tags seleccionados para la tarea.
   List<String> _selectedTags = [];
+  // Lista de tags seleccionados para la tarea.
+  List<String> _selectedSection = [];
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +51,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
               validator: (input) => input.isEmpty ? 'Enter some text' : null,
               onSaved: (input) => _description = input,
               maxLength: 180,
-              maxLines: 3,
+              maxLines: 2,
             ),
 
             /// Campo del pull request con un checkbox en el que activo = true y apagado = false
@@ -67,6 +71,27 @@ class _NewTaskFormState extends State<NewTaskForm> {
                   },
                 ),
               ],
+            ),
+
+            /// Boton que muestra las opciones de tags disponibles.
+            FlatButton(
+              color: Colors.grey,
+              onPressed: () {
+                _selectSection();
+              },
+              child: Text('Project section'),
+            ),
+
+            /// Lista de chips de tags seleccionados para la tarea.
+            ConstrainedBox(
+              constraints: BoxConstraints(maxHeight: 40),
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: _selectedSection.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return _sectionChips(index);
+                },
+              ),
             ),
 
             /// Boton que te muestra un dialogBox con los nombres de los miebros para escoger
@@ -279,7 +304,75 @@ class _NewTaskFormState extends State<NewTaskForm> {
       ),
     );
   }
+
+  /// Crea el DialoBox para seleccionar tags
+  Future<void> _selectSection() async {
+    await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return SimpleDialog(
+          title: const Text('Select tag'),
+          children: _sectionDialogOptions(context),
+        );
+      },
+    );
+  }
+
+  /// Crea la lista de tags disponibles de la variable _tags y al seleccionarse se agregan a _selectedTags y se remueven
+  /// de esa lista
+  List<Widget> _sectionDialogOptions(BuildContext context) {
+    List<Widget> options = [];
+    for (var i = 0; i <= this._sections.length - 1; i++) {
+      options.add(
+        SimpleDialogOption(
+          onPressed: () {
+            setState(() {
+              _selectedSection.add(_sections[i]);
+              _sections.remove(_sections[i]);
+            });
+            Navigator.pop(context);
+          },
+          child: Text('#${_sections[i]}'),
+        ),
+      );
+    }
+    return options;
+  }
+
+  /// Crea una lista de chips con el nombre de los tags con una x para eliminarlos, si se toca la x se elimina el chip
+  /// removiendo el tag de la variable _selectedTags y re-agregarlos a _tags para que se muestre como opción.
+  Container _sectionChips(int index) {
+    return Container(
+      margin: EdgeInsets.only(right: 5),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(minWidth: 60),
+        child: Chip(
+          avatar: CircleAvatar(
+            backgroundColor: Colors.grey.shade800,
+            // child: Text('AB'),
+          ),
+          label: Text(
+            '# ${_selectedSection[index]}',
+            style: TextStyle(fontSize: 12),
+          ),
+          deleteIcon: Icon(
+            Icons.cancel,
+          ),
+          deleteIconColor: Colors.red,
+          // Al tocar el icono rojo se elimina el chip.
+          onDeleted: () {
+            setState(() {
+              _sections.add(_selectedSection[index]);
+              _selectedSection.remove(_selectedSection[index]);
+            });
+          },
+        ),
+      ),
+    );
+  }
 }
 
 // TODO: Hacer que cuando se agrega selecciona una opción de memberDialogOption no se pueda seleccionar nuevamente
 // TODO: Crear un indicador para que el usuario sepa que la tarea fue creada
+// TODO: Agregar opción de sección de tarea
+// TODO: Usar un sistema de state management para usar el form
