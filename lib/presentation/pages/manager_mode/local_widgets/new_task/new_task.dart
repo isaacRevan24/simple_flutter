@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'new_task_form.dart';
+import 'new_task_form_bloc.dart';
 
 /// Página para crear nuava tarea
 class NuevaTarea extends StatelessWidget {

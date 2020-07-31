@@ -59,9 +59,6 @@ class _NewTaskFormState extends State<NewTaskForm> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text('Pull request'),
-                SizedBox(
-                  width: 20,
-                ),
                 Checkbox(
                   value: _pullRequest,
                   onChanged: (bool newValue) {
@@ -376,3 +373,4 @@ class _NewTaskFormState extends State<NewTaskForm> {
 // TODO: Crear un indicador para que el usuario sepa que la tarea fue creada
 // TODO: Agregar opción de sección de tarea
 // TODO: Usar un sistema de state management para usar el form
+// TODO: Agregar campo de fecha
