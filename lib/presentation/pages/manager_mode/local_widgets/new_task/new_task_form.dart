@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../models/new_task.dart';
+
 /// Formulario para crear una nueva tarea
 class NewTaskForm extends StatefulWidget {
   @override
@@ -9,23 +11,10 @@ class NewTaskForm extends StatefulWidget {
 class _NewTaskFormState extends State<NewTaskForm> {
   // Variable necesaria para validar el formulario.
   final _formKey = GlobalKey<FormState>();
-  // Lista de miembros del proyecto que se les puede asignar a la tarea.
-  List<String> _members = ['Isaac Atencio', 'Arlette Perez', 'Mabelis Hidalgo'];
-  // Lista de tags creados por el manager para asignar.
-  List<String> _tags = ['bd', 'frontend', 'backend'];
+  // Objeto de nueva tarea
+  final _newTask = NewTask();
   // Lista de tags creados por el manager para asignar.
   List<String> _sections = ['bd', 'frontend', 'backend'];
-  // Titulo de la tarea.
-  String _taskTitle;
-  // Descripción de la tarea.
-  String _description;
-  // Si es true la tarea debe ser pasado por procesos de validación y si no pasa directamente a los avances de proyecto.
-  bool _pullRequest = false;
-  // Lista de miembros encargados de realizar la tarea presente.
-  List<String> _inCharge = [];
-  // Lista de tags seleccionados para la tarea.
-  List<String> _selectedTags = [];
-  // Lista de tags seleccionados para la tarea.
   List<String> _selectedSection = [];
 
   @override
@@ -41,7 +30,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
             TextFormField(
               decoration: InputDecoration(labelText: 'Title'),
               validator: (input) => input.isEmpty ? 'Enter some text' : null,
-              onSaved: (input) => _taskTitle = input,
+              onSaved: (input) => _newTask.addTitle(input),
               maxLength: 55,
             ),
 
@@ -49,7 +38,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
             TextFormField(
               decoration: InputDecoration(labelText: 'Description'),
               validator: (input) => input.isEmpty ? 'Enter some text' : null,
-              onSaved: (input) => _description = input,
+              onSaved: (input) => _newTask.addDescriptio(input),
               maxLength: 180,
               maxLines: 2,
             ),
@@ -60,10 +49,10 @@ class _NewTaskFormState extends State<NewTaskForm> {
               children: <Widget>[
                 Text('Pull request'),
                 Checkbox(
-                  value: _pullRequest,
+                  value: _newTask.pullRequest,
                   onChanged: (bool newValue) {
                     setState(() {
-                      _pullRequest = newValue;
+                      _newTask.setPullRequest(newValue);
                     });
                   },
                 ),
@@ -106,7 +95,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
               constraints: BoxConstraints(maxHeight: 40),
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: _inCharge.length,
+                itemCount: _newTask.inChargeListLength(),
                 itemBuilder: (BuildContext context, int index) {
                   return _inChargeMemberChip(index);
                 },
@@ -127,7 +116,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
               constraints: BoxConstraints(maxHeight: 40),
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: _selectedTags.length,
+                itemCount: _newTask.selectedTagsLength(),
                 itemBuilder: (BuildContext context, int index) {
                   return _tagChips(index);
                 },
@@ -149,23 +138,18 @@ class _NewTaskFormState extends State<NewTaskForm> {
   /// consola
   void _submit() {
     if (_formKey.currentState.validate()) {
-      if (_inCharge.length > 0) {
-        // guarda el estado de los TextForms a sus variables.
-        _formKey.currentState.save();
-        // Muestra una snackBar con feedback
-        Scaffold.of(context)
-            .showSnackBar(SnackBar(content: Text('Processing Data')));
+      // if (_inCharge.length > 0) {
+      // guarda el estado de los TextForms a sus variables.
+      _formKey.currentState.save();
+      _newTask.imprimirValores();
+      // Muestra una snackBar con feedback
+      Scaffold.of(context)
+          .showSnackBar(SnackBar(content: Text('Processing Data')));
 
-        print(_taskTitle);
-        print(_inCharge);
-        print(_inCharge.length);
-        print(_description);
-        print(_selectedTags);
-        print(_pullRequest);
-      } else {
-        Scaffold.of(context)
-            .showSnackBar(SnackBar(content: Text('Have to add a member')));
-      }
+      // } else {
+      //   Scaffold.of(context)
+      //       .showSnackBar(SnackBar(content: Text('Have to add a member')));
+      // }
     }
   }
 
@@ -186,17 +170,16 @@ class _NewTaskFormState extends State<NewTaskForm> {
   /// agrega a la lista _inCharge para mostrar como chips
   List<Widget> _membersDialogOptions(BuildContext context) {
     List<Widget> options = [];
-    for (var i = 0; i <= this._members.length - 1; i++) {
+    for (var i = 0; i <= _newTask.memberListLength(); i++) {
       options.add(
         SimpleDialogOption(
           onPressed: () {
             setState(() {
-              _inCharge.add(_members[i]);
-              _members.remove(_members[i]);
+              _newTask.addInChargeMember(i);
+              Navigator.pop(context);
             });
-            Navigator.pop(context);
           },
-          child: Text(_members[i]),
+          child: Text(_newTask.memberName(i)),
         ),
       );
     }
@@ -217,7 +200,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
             // child: Text('AB'),
           ),
           label: Text(
-            _inCharge[index],
+            _newTask.inChargeMember(index),
             style: TextStyle(fontSize: 12),
           ),
           deleteIcon: Icon(
@@ -227,8 +210,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
           // Al tocar el icono rojo se elimina el chip.
           onDeleted: () {
             setState(() {
-              _members.add(_inCharge[index]);
-              _inCharge.remove(_inCharge[index]);
+              _newTask.removeInChargeMember(index);
             });
           },
         ),
@@ -253,17 +235,16 @@ class _NewTaskFormState extends State<NewTaskForm> {
   /// de esa lista
   List<Widget> _tagsDialogOptions(BuildContext context) {
     List<Widget> options = [];
-    for (var i = 0; i <= this._tags.length - 1; i++) {
+    for (var i = 0; i <= _newTask.tagListLength(); i++) {
       options.add(
         SimpleDialogOption(
           onPressed: () {
             setState(() {
-              _selectedTags.add(_tags[i]);
-              _tags.remove(_tags[i]);
+              _newTask.addTag(i);
             });
             Navigator.pop(context);
           },
-          child: Text('#${_tags[i]}'),
+          child: Text('#${_newTask.tagName(i)}'),
         ),
       );
     }
@@ -283,7 +264,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
             // child: Text('AB'),
           ),
           label: Text(
-            '# ${_selectedTags[index]}',
+            '# ${_newTask.selectedTagName(index)}',
             style: TextStyle(fontSize: 12),
           ),
           deleteIcon: Icon(
@@ -293,8 +274,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
           // Al tocar el icono rojo se elimina el chip.
           onDeleted: () {
             setState(() {
-              _tags.add(_selectedTags[index]);
-              _selectedTags.remove(_selectedTags[index]);
+              _newTask.removeSelectedTag(index);
             });
           },
         ),
@@ -349,6 +329,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
             // child: Text('AB'),
           ),
           label: Text(
+            // '# ${_selectedSection[index]}',
             '# ${_selectedSection[index]}',
             style: TextStyle(fontSize: 12),
           ),
