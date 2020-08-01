@@ -1,28 +1,33 @@
 class NewTask {
   List<String> _members = ['Isaac Atencio', 'Arlette Perez', 'Mabelis Hidalgo'];
-  // List<String> _sections;
+  List<String> _sections = ['bd', 'frontend', 'backend'];
   // Lista de tags creados por el manager para asignar.
   List<String> _tags = ['bd', 'frontend', 'backend'];
-  String taskTitle;
-  String taskDescription;
-  bool pullRequest = false;
+  String _taskTitle;
+  String _taskDescription;
+  bool _pullRequest = false;
   List<String> _inCharge = [];
   List<String> _selectedTags = [];
-  // String _selectedSection;
+  String _selectedSection = "";
 
   /// Save title of the task
   void addTitle(String title) {
-    taskTitle = title;
+    _taskTitle = title;
   }
 
   /// Save description of the task
   void addDescriptio(String description) {
-    taskDescription = description;
+    _taskDescription = description;
   }
 
   /// If true the task must go to review else go direct to the project
   void setPullRequest(bool pr) {
-    pullRequest = pr;
+    _pullRequest = pr;
+  }
+
+  /// If true the task must go to review else go direct to the project
+  bool getPullRequest() {
+    return _pullRequest;
   }
 
   /*Member logic start*/
@@ -85,9 +90,35 @@ class NewTask {
 
   /*Tag logic end*/
 
+  /*Sections logic start*/
+
+  int sectionListLength() {
+    return _sections.length - 1;
+  }
+
+  void selectSection(int index) {
+    _selectedSection = _sections[index];
+  }
+
+  String sectionLabel(int index) {
+    return _sections[index];
+  }
+
+  String selectedSectionName() {
+    return _selectedSection;
+  }
+
+  void removeSelectedSection() {
+    _selectedSection = "";
+  }
+
+  /*Sections logic end*/
+
   void imprimirValores() {
-    print('Titulo: $taskTitle');
-    print('Descripción: $taskDescription');
-    print('Pull request: $pullRequest');
+    print('Titulo: $_taskTitle');
+    print('Descripción: $_taskDescription');
+    print('Pull request: $_pullRequest');
+    print('In charge members: $_inCharge');
+    print('Selected tags: $_selectedTags');
   }
 }

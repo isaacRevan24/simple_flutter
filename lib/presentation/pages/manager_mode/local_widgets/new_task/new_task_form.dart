@@ -13,9 +13,6 @@ class _NewTaskFormState extends State<NewTaskForm> {
   final _formKey = GlobalKey<FormState>();
   // Objeto de nueva tarea
   final _newTask = NewTask();
-  // Lista de tags creados por el manager para asignar.
-  List<String> _sections = ['bd', 'frontend', 'backend'];
-  List<String> _selectedSection = [];
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +46,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
               children: <Widget>[
                 Text('Pull request'),
                 Checkbox(
-                  value: _newTask.pullRequest,
+                  value: _newTask.getPullRequest(),
                   onChanged: (bool newValue) {
                     setState(() {
                       _newTask.setPullRequest(newValue);
@@ -71,13 +68,7 @@ class _NewTaskFormState extends State<NewTaskForm> {
             /// Lista de chips de tags seleccionados para la tarea.
             ConstrainedBox(
               constraints: BoxConstraints(maxHeight: 40),
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: _selectedSection.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return _sectionChips(index);
-                },
-              ),
+              child: _sectionChips(_newTask.selectedSectionName()),
             ),
 
             /// Boton que te muestra un dialogBox con los nombres de los miebros para escoger
@@ -299,17 +290,16 @@ class _NewTaskFormState extends State<NewTaskForm> {
   /// de esa lista
   List<Widget> _sectionDialogOptions(BuildContext context) {
     List<Widget> options = [];
-    for (var i = 0; i <= this._sections.length - 1; i++) {
+    for (var i = 0; i <= _newTask.sectionListLength(); i++) {
       options.add(
         SimpleDialogOption(
           onPressed: () {
             setState(() {
-              _selectedSection.add(_sections[i]);
-              _sections.remove(_sections[i]);
+              _newTask.selectSection(i);
             });
             Navigator.pop(context);
           },
-          child: Text('#${_sections[i]}'),
+          child: Text('#${_newTask.sectionLabel(i)}'),
         ),
       );
     }
@@ -318,35 +308,49 @@ class _NewTaskFormState extends State<NewTaskForm> {
 
   /// Crea una lista de chips con el nombre de los tags con una x para eliminarlos, si se toca la x se elimina el chip
   /// removiendo el tag de la variable _selectedTags y re-agregarlos a _tags para que se muestre como opción.
-  Container _sectionChips(int index) {
-    return Container(
-      margin: EdgeInsets.only(right: 5),
-      child: ConstrainedBox(
-        constraints: BoxConstraints(minWidth: 60),
-        child: Chip(
-          avatar: CircleAvatar(
-            backgroundColor: Colors.grey.shade800,
-            // child: Text('AB'),
+  Container _sectionChips(String sectionName) {
+    if (sectionName.length == 0) {
+      return Container(
+        margin: EdgeInsets.only(right: 5),
+        child: ConstrainedBox(
+          constraints: BoxConstraints(minWidth: 60),
+          child: Chip(
+            label: Text(
+              "Plis select a section",
+              style: TextStyle(fontSize: 12),
+            ),
           ),
-          label: Text(
-            // '# ${_selectedSection[index]}',
-            '# ${_selectedSection[index]}',
-            style: TextStyle(fontSize: 12),
-          ),
-          deleteIcon: Icon(
-            Icons.cancel,
-          ),
-          deleteIconColor: Colors.red,
-          // Al tocar el icono rojo se elimina el chip.
-          onDeleted: () {
-            setState(() {
-              _sections.add(_selectedSection[index]);
-              _selectedSection.remove(_selectedSection[index]);
-            });
-          },
         ),
-      ),
-    );
+      );
+    } else {
+      return Container(
+        margin: EdgeInsets.only(right: 5),
+        child: ConstrainedBox(
+          constraints: BoxConstraints(minWidth: 60),
+          child: Chip(
+            avatar: CircleAvatar(
+              backgroundColor: Colors.grey.shade800,
+              // child: Text('AB'),
+            ),
+            label: Text(
+              // '# ${_selectedSection[index]}',
+              '# $sectionName',
+              style: TextStyle(fontSize: 12),
+            ),
+            deleteIcon: Icon(
+              Icons.cancel,
+            ),
+            deleteIconColor: Colors.red,
+            // Al tocar el icono rojo se elimina el chip.
+            onDeleted: () {
+              setState(() {
+                _newTask.removeSelectedSection();
+              });
+            },
+          ),
+        ),
+      );
+    }
   }
 }
 
