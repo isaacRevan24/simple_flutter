@@ -355,8 +355,5 @@ class _NewTaskFormState extends State<NewTaskForm> {
   }
 }
 
-// TODO: Hacer que cuando se agrega selecciona una opción de memberDialogOption no se pueda seleccionar nuevamente
 // TODO: Crear un indicador para que el usuario sepa que la tarea fue creada
-// TODO: Agregar opción de sección de tarea
-// TODO: Usar un sistema de state management para usar el form
 // TODO: Agregar campo de fecha
