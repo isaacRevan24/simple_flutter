@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../models/new_task.dart';
+import '../../../../../usecase/new_task_form.dart';
 
 /// Formulario para crear una nueva tarea
 class NewTaskForm extends StatefulWidget {

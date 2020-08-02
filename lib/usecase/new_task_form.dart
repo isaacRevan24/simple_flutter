@@ -1,7 +1,6 @@
 class NewTask {
   List<String> _members = ['Isaac Atencio', 'Arlette Perez', 'Mabelis Hidalgo'];
   List<String> _sections = ['bd', 'frontend', 'backend'];
-  // Lista de tags creados por el manager para asignar.
   List<String> _tags = ['bd', 'frontend', 'backend'];
   String _taskTitle;
   String _taskDescription;
@@ -117,6 +116,7 @@ class NewTask {
   void imprimirValores() {
     print('Titulo: $_taskTitle');
     print('Descripción: $_taskDescription');
+    print('Project section $_selectedSection');
     print('Pull request: $_pullRequest');
     print('In charge members: $_inCharge');
     print('Selected tags: $_selectedTags');
