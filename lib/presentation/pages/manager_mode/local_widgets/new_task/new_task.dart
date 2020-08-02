@@ -9,14 +9,14 @@ class NuevaTarea extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
-        appBar: _crearTarea(context),
+        appBar: _crearTareaAppBar(context),
         body: NewTaskForm(),
       ),
     );
   }
 
   /// App bar del formulario de nueva tarea
-  AppBar _crearTarea(BuildContext context) {
+  AppBar _crearTareaAppBar(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.white,
       elevation: 10,

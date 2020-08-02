@@ -9,9 +9,10 @@ class NewTaskForm extends StatefulWidget {
 }
 
 class _NewTaskFormState extends State<NewTaskForm> {
-  // Variable necesaria para validar el formulario.
+  /// Variable necesaria para validar el formulario.
   final _formKey = GlobalKey<FormState>();
-  // Objeto de nueva tarea
+
+  /// Objeto de nueva tarea
   final _newTask = NewTask();
 
   @override
