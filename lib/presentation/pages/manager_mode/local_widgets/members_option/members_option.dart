@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'invitedUrl.dart';
+import 'invited_url.dart';
+import 'list_of_members.dart';
 import '../options_app_bar.dart';
 
 // Titulo de app bar para "Members options"
@@ -16,6 +17,10 @@ class MembersOptions extends StatelessWidget {
         appBar: optionsAppBar(context, appBarTitle),
         body: Column(
           children: <Widget>[
+            // List of members
+            ListOfMembers(),
+            // Add member
+            // Remove member
             InviteUrl(),
           ],
         ),

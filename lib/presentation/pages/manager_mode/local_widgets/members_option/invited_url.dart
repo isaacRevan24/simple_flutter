@@ -5,13 +5,17 @@ class InviteUrl extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        FlatButton(
-          onPressed: () => {},
-          child: Text("Generate a invite url"),
-          color: Colors.grey,
-        ),
+        _urlButtonGenerator(),
         _urlBar(),
       ],
+    );
+  }
+
+  FlatButton _urlButtonGenerator() {
+    return FlatButton(
+      onPressed: () => {},
+      child: Text("Generate a invite url"),
+      color: Colors.grey,
     );
   }
 
