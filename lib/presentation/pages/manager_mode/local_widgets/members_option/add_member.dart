@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 class AddMember extends StatelessWidget {
@@ -9,9 +7,15 @@ class AddMember extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: _addMemberAppbar(context),
-        body: Center(
-          child: Text("add member"),
-        ),
+        body: _addMemberOptions(),
+      ),
+    );
+  }
+
+  Container _addMemberOptions() {
+    return Container(
+      child: Center(
+        child: Text("add member"),
       ),
     );
   }
@@ -33,3 +37,6 @@ class AddMember extends StatelessWidget {
     );
   }
 }
+
+// TODO: Optión para agregar usuario de tu lista de amigos
+// TODO: Optión para agregar usuario buscando por medio de su @usuario

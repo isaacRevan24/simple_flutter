@@ -24,6 +24,7 @@ class MembersOptions extends StatelessWidget {
             // Add member
             _addMemberButton(context),
             // Remove member
+            // Lista de solicitudes
             InviteUrl(),
           ],
         ),
